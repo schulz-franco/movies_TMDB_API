@@ -21,6 +21,7 @@ export async function get_movies(page) {
 export async function get_genres() {
   try {
     const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list', options);
+    console.log(response.data.genres)
     return response.data.genres
   } catch (error) {
     console.error(error);
