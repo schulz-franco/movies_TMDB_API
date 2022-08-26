@@ -4,7 +4,13 @@
     grid-template-rows: min-content;
     align-items: center;
     justify-items: center;
-    padding: 20px 30px 0 30px;
+    padding: 20px 30px;
+    transition: 400ms;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
 }
 
 .navbar-container .logo {
@@ -67,14 +73,15 @@
     overflow-y: scroll;
 }
 
-.navbar-menu-container .background-title {
+.background-title {
     position: fixed;
-    left: 0;
+    left: -85%;
     width: 85%;
     top: 0;
     height: 120px;
     background-color: #080f28;
-    z-index: 4;
+    z-index: 3;
+    transition: 200ms;
 }
 
 .navbar-menu-anim-enter {
@@ -156,7 +163,7 @@
 
 .navbar-menu-container .navbar-link {
     text-decoration: none;
-    color: #8da0bc;
+    color: #fff;
     margin: 20px 0 0 30px;
 }
 
@@ -169,7 +176,7 @@
 }
 
 .navbar-menu-container .navbar-genres-title {
-    color: #8da0bc;
+    color: #fff;
     margin-right: 10px;
 }
 
@@ -183,7 +190,7 @@
     grid-template-columns: auto auto;
     grid-auto-rows: min-content;
     row-gap: 8px;
-    margin: 14px 0 40px 30px;
+    margin: 20px 0 40px 30px;
 }
 
 .navbar-menu-container .navbar-genres-container .genre-link {

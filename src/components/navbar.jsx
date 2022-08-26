@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CSSTransition } from "react-transition-group"
 import { get_genres } from "../tmdb-api/api_methods"
 import { Link } from "react-router-dom"
@@ -10,6 +10,15 @@ export default function Navbar() {
 
     const [open, set_open] = useState(false)
     const [genres, set_genres] = useState([])
+    const navbar_ref = useRef(null)
+
+    window.addEventListener("scroll", (e)=> {
+        if (window.scrollY >= 50) {
+            navbar_ref.current.style.backgroundColor = "#080f28"
+        } else {
+            navbar_ref.current.style.backgroundColor = ""
+        }
+    }, false)
 
     useEffect(()=> {
         get_genres().then(res => {
@@ -34,7 +43,7 @@ export default function Navbar() {
     }
 
     return(
-        <div className="navbar-container">
+        <div className="navbar-container" ref={navbar_ref}>
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">Movies</span>
             <span/>
@@ -43,9 +52,11 @@ export default function Navbar() {
             <CSSTransition in={open} timeout={200} classNames={'black-background-anim'} unmountOnExit>
                 <div onClick={control_navbar} className="black-background"></div>
             </CSSTransition>
+            <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'}>
+                <div className="background-title"></div>
+            </CSSTransition>
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'} unmountOnExit>
                 <div className="navbar-menu-container">
-                    <div className="background-title"></div>
                     <div className="search-bar">
                         <input className="search-input" type="text" placeholder="Search movies..."/>
                         <IoMdSearch className="search-icon"/>

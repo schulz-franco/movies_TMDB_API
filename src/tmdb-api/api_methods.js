@@ -9,9 +9,10 @@ const options = {
   }
 }
 
-export async function get_movies(page) {
+export async function get_movies(page, sort_by) {
   try {
-    const response = await axios.get('https://api.themoviedb.org/4/discover/movie?sort_by=popularity.desc?page=' + page, options);
+    const response = await axios.get('https://api.themoviedb.org/4/discover/movie?sort_by=' + sort_by +'?page=' + page, options);
+    console.log(response.data.results)
     return response.data.results
   } catch (error) {
     console.error(error);
@@ -21,8 +22,20 @@ export async function get_movies(page) {
 export async function get_genres() {
   try {
     const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list', options);
-    console.log(response.data.genres)
     return response.data.genres
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function get_news(amount) {
+  try {
+    const response = await axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_year=2022', options);
+    let movies_new = []
+    for (let count = 0; count < amount; count++) {
+      movies_new.push(response.data.results[count])
+    }
+    return movies_new
   } catch (error) {
     console.error(error);
   }
