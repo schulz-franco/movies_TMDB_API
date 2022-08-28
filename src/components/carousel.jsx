@@ -77,7 +77,7 @@ export default function Carousel() {
             <div className="carousel-items-container">
                 {movies_news.map((movie, index) => {
                     return(
-                        <CSSTransition in={(current_item == index)} timeout={400} classNames={'carousel-anim'} unmountOnExit>
+                        <CSSTransition in={(current_item == index)} timeout={300} classNames={'carousel-anim'} unmountOnExit>
                             <Movie_carousel
                                 backdrop_url={movie.poster_path}
                                 title={movie.title}

@@ -103,3 +103,19 @@
     width: 2.500rem;
     background-color: #007aff;
 }
+
+.carousel-anim-enter {
+    opacity: 0;
+}
+
+.carousel-anim-enter-done {
+    opacity: 1;
+}
+
+.carousel-anim-exit {
+    opacity: 1;
+}
+
+.carousel-anim-exit-done {
+    opacity: 0;
+}

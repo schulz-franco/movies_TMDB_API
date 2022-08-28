@@ -27,12 +27,12 @@ export default function Movies() {
 
     useEffect(()=> {
         if (category == "latest") {
-            get_movies(1, "?primary_release_year=2022").then(res => {
+            get_movies(1, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
+                console.log(res)
                 set_movies(res)
             })
         } else {
-            get_movies(1, "?sort_by=vote_average.desc").then(res => {
-                console.log(res)
+            get_movies(1, "&sort_by=popularity.desc").then(res => {
                 set_movies(res)
             })
         }
@@ -43,7 +43,7 @@ export default function Movies() {
             <span className="movies-title">Online movies</span>
             <div className="category-container">
                 <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Ranking</span>
+                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
             </div>
             <div className="movies-list-container">
                 {movies.map(movie => {
@@ -56,6 +56,7 @@ export default function Movies() {
                     )
                 })}
             </div>
+            <button className="more-movies">Load more movies</button>
         </div>
     )
 }

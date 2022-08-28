@@ -42,8 +42,9 @@
 
 .movies-list-container {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 47% 47%;
     grid-auto-rows: min-content;
+    column-gap: 6%;
 }
 
 .movies-list-container .movie-container {
@@ -54,9 +55,6 @@
     position: relative;
 }
 
-.movies-list-container .movie-container:nth-child(odd) {
-    margin-right: 1.500rem;
-}
 
 .movies-list-container .movie-container img {
     width: 100%;
@@ -76,4 +74,17 @@
 .movies-list-container .movie-container .movie-year {
     position: absolute;
     opacity: 0;
+}
+
+.movies-main-container .more-movies {
+    background-color: #3d4f91;
+    border: none;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
 }

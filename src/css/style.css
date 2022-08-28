@@ -294,6 +294,18 @@ body::-webkit-scrollbar-thumb {
   width: 2.500rem;
   background-color: #007aff; }
 
+.carousel-anim-enter {
+  opacity: 0; }
+
+.carousel-anim-enter-done {
+  opacity: 1; }
+
+.carousel-anim-exit {
+  opacity: 1; }
+
+.carousel-anim-exit-done {
+  opacity: 0; }
+
 .movies-main-container {
   display: grid;
   grid-template-columns: auto;
@@ -333,8 +345,9 @@ body::-webkit-scrollbar-thumb {
 
 .movies-list-container {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-auto-rows: min-content; }
+  grid-template-columns: 47% 47%;
+  grid-auto-rows: min-content;
+  column-gap: 6%; }
 
 .movies-list-container .movie-container {
   display: grid;
@@ -342,9 +355,6 @@ body::-webkit-scrollbar-thumb {
   grid-auto-rows: min-content;
   margin-bottom: 1.25rem;
   position: relative; }
-
-.movies-list-container .movie-container:nth-child(odd) {
-  margin-right: 1.500rem; }
 
 .movies-list-container .movie-container img {
   width: 100%;
@@ -362,5 +372,17 @@ body::-webkit-scrollbar-thumb {
 .movies-list-container .movie-container .movie-year {
   position: absolute;
   opacity: 0; }
+
+.movies-main-container .more-movies {
+  background-color: #3d4f91;
+  border: none;
+  outline: none;
+  color: #fff;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700; }
 
 /*# sourceMappingURL=style.css.map */

@@ -11,7 +11,7 @@ const options = {
 
 export async function get_movies(page, query) {
   try {
-    const response = await axios.get('https://api.themoviedb.org/3/discover/movie' + query +'?page=' + page, options);
+    const response = await axios.get('https://api.themoviedb.org/3/discover/movie?page=' + page + query, options);
     return response.data.results
   } catch (error) {
     console.error(error);
@@ -29,7 +29,7 @@ export async function get_genres() {
 
 export async function get_news(amount) {
   try {
-    const response = await axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_year=2022', options);
+    const response = await axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28', options);
     let movies_new = []
     for (let count = 0; count < amount; count++) {
       movies_new.push(response.data.results[count])
