@@ -9,10 +9,9 @@ const options = {
   }
 }
 
-export async function get_movies(page, sort_by) {
+export async function get_movies(page, query) {
   try {
-    const response = await axios.get('https://api.themoviedb.org/4/discover/movie?sort_by=' + sort_by +'?page=' + page, options);
-    console.log(response.data.results)
+    const response = await axios.get('https://api.themoviedb.org/3/discover/movie' + query +'?page=' + page, options);
     return response.data.results
   } catch (error) {
     console.error(error);

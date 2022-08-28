@@ -13,10 +13,13 @@ export default function Navbar() {
     const navbar_ref = useRef(null)
 
     window.addEventListener("scroll", (e)=> {
-        if (window.scrollY >= 50) {
-            navbar_ref.current.style.backgroundColor = "#080f28"
-        } else {
-            navbar_ref.current.style.backgroundColor = ""
+        try {
+            if (window.scrollY > 50) {
+                navbar_ref.current.style.backgroundColor = "#080f28"
+            } else if (window.scrollY < 50) {
+                navbar_ref.current.style.backgroundColor = ""
+            }
+        } catch {
         }
     }, false)
 

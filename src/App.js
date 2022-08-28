@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import Navbar from "./components/navbar"
 import Carousel from "./components/carousel"
+import Movies from "./components/movies"
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
         <Navbar />
         <Carousel />
         <Routes>
-          <Route path='/' element={<></>} />
+          <Route path='/' element={<Movies />} />
         </Routes>
   </BrowserRouter>
   );

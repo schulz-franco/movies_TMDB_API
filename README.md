@@ -1,3 +1,8 @@
+# How to use
+
+If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
+Go to src/tmdb-api/api_methods.js and paste your token into the variable called "api_key"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
