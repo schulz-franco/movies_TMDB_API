@@ -45,6 +45,10 @@ export default function Navbar() {
         }
     }
 
+    function search() {
+        window.location.href = "/search/" + document.querySelector(".navbar-menu-container .search-bar .search-input").value
+    }
+
     return(
         <div className="navbar-container" ref={navbar_ref}>
             <img className="logo" src={logo} alt="Movies" />
@@ -62,9 +66,12 @@ export default function Navbar() {
                 <div className="navbar-menu-container">
                     <div className="search-bar">
                         <input className="search-input" type="text" placeholder="Search movies..."/>
-                        <IoMdSearch className="search-icon"/>
+                        <IoMdSearch onClick={search} className="search-icon"/>
                     </div>
-                    <Link onClick={control_navbar} className="navbar-link" to="/">Home</Link>
+                    <Link onClick={()=> {
+                        control_navbar()
+                        window.scrollTo(0 ,0)
+                    }} className="navbar-link" to="/">Home</Link>
                     <div className="navbar-genres-title-container">
                         <span className="navbar-genres-title">Genres</span>
                         <IoIosArrowDown className="navbar-arrow"/>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { get_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 export default function Genres() {
 
@@ -50,6 +50,7 @@ export default function Genres() {
         } else {
             arrow1.classList.remove("invalid")
         }
+        window.scrollTo(0, 0)
     }, [page, id])
 
     useEffect(()=> {
@@ -62,11 +63,11 @@ export default function Genres() {
             <div className="movies-list-container">
                 {movies.map(movie => {
                     return(
-                        <div className="movie-container">
+                        <Link to={"/movie/" + movie.id} className="movie-container">
                             <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
                             <span className="movie-title">{movie.title}</span>
                             <span className="movie-year">{movie.release_date.slice(0, 4)}</span>
-                        </div>
+                        </Link>
                     )
                 })}
             </div>

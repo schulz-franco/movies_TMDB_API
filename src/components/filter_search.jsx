@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { get_movies } from "../tmdb-api/api_methods"
+import { search_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { Link } from "react-router-dom"
+import { useParams, Link } from 'react-router-dom';
 
-export default function Movies() {
+export default function Genres() {
 
     let first_state = {
         id: "",
@@ -11,28 +11,13 @@ export default function Movies() {
         release_date: "",
         title: ""
     }
-
+    
+    const {search} = useParams();
     const [movies, set_movies] = useState([first_state])
-    const [category, set_category] = useState("latest")
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
 
-    function change_category(ev, button) {
-        if (button == "ranking") {
-            set_category("ranking")
-            ev.target.previousSibling.classList.remove("category-current")
-        } else {
-            set_category("latest")
-            ev.target.nextSibling.classList.remove("category-current")
-        }
-        ev.target.classList.add("category-current")
-        if (page > 1) {
-            set_page(1)
-        }
-    }
-
     function control_page(ev, option) {
-        window.scrollTo(0, 0)
         if (option == "next") {
             return set_page(page + 1)
         } else return set_page(page - 1)
@@ -49,44 +34,35 @@ export default function Movies() {
     useEffect(()=> {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
-        if (category == "latest") {
-            get_movies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
-                set_total_pages(res.total_pages)
-                set_movies(res.results)
-                if (page >= res.total_pages) {
-                    arrow2.classList.add("invalid")
-                    set_page(res.total_pages)
-                } else {
-                    arrow2.classList.remove("invalid")
-                }
-            })
-        } else {
-            get_movies(page, "&sort_by=popularity.desc").then(res => {
-                set_total_pages(res.total_pages)
-                set_movies(res.results)
-                if (page >= res.total_pages) {
-                    arrow2.classList.add("invalid")
-                    set_page(res.total_pages)
-                } else {
-                    arrow2.classList.remove("invalid")
-                }
-            })
-        }
+        search_movies(page, "&query=" + search).then(res => {
+            if (!res.results) {
+                return set_movies([])
+            }
+            set_total_pages(res.total_pages)
+            set_movies(res.results)
+            if (page >= res.total_pages) {
+                arrow2.classList.add("invalid")
+                set_page(res.total_pages)
+            } else {
+                arrow2.classList.remove("invalid")
+            }
+        })
         if (page <= 1) {
             arrow1.classList.add("invalid")
             set_page(1)
         } else {
             arrow1.classList.remove("invalid")
         }
-    }, [page, category])
+        window.scrollTo(0, 0)
+    }, [page, search])
+
+    useEffect(()=> {
+        set_page(1)
+    }, [search])
 
     return(
-        <div className="movies-main-container">
-            <span className="movies-title">Online movies</span>
-            <div className="category-container">
-                <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
-            </div>
+        <div style={{marginTop: "6rem"}} className="movies-main-container">
+            <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">Searching: {search}</span>
             <div className="movies-list-container">
                 {movies.map(movie => {
                     return(

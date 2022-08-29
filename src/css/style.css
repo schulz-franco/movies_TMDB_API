@@ -166,7 +166,9 @@ body::-webkit-scrollbar-thumb {
   grid-row: 1;
   color: #178FFF;
   font-size: 30px;
-  margin-left: 78%; }
+  margin-left: 78%;
+  display: grid;
+  align-items: center; }
 
 .navbar-menu-container .navbar-link {
   text-decoration: none;
@@ -182,7 +184,7 @@ body::-webkit-scrollbar-thumb {
 
 .navbar-menu-container .navbar-genres-title {
   color: #fff;
-  margin-right: 10px; }
+  margin-right: 6px; }
 
 .navbar-menu-container .navbar-arrow {
   color: #178FFF;
