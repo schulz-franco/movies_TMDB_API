@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { get_movies } from "../tmdb-api/api_methods"
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 
 export default function Movies() {
 
@@ -13,6 +14,7 @@ export default function Movies() {
     const [movies, set_movies] = useState([first_state])
     const [category, set_category] = useState("latest")
     const [page, set_page] = useState(1)
+    const [total_pages, set_total_pages] = useState(null)
 
     function change_category(ev, button) {
         if (button == "ranking") {
@@ -23,17 +25,36 @@ export default function Movies() {
             ev.target.nextSibling.classList.remove("category-current")
         }
         ev.target.classList.add("category-current")
+        if (page > 1) {
+            set_page(1)
+        }
+    }
+
+    function control_page(ev, option) {
+        if (option == "next") {
+            return set_page(page + 1)
+        }
+        return set_page(page - 1)
+    }
+
+    function see_pages() {
+        if (total_pages > 999) {
+            return "..."
+        } else {
+            return total_pages
+        }
     }
 
     useEffect(()=> {
         if (category == "latest") {
-            get_movies(1, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
-                console.log(res)
-                set_movies(res)
+            get_movies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
+                set_total_pages(res.total_pages)
+                set_movies(res.results)
             })
         } else {
-            get_movies(1, "&sort_by=popularity.desc").then(res => {
-                set_movies(res)
+            get_movies(page, "&sort_by=popularity.desc").then(res => {
+                set_total_pages(res.total_pages)
+                set_movies(res.results)
             })
         }
     }, [page, category])
@@ -56,7 +77,15 @@ export default function Movies() {
                     )
                 })}
             </div>
-            <button className="more-movies">Load more movies</button>
+            <div className="pagination-container">
+                <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow" />
+                <div className="pages">
+                    <span className="page">{page}</span>
+                    <span>of</span>
+                    <span className="total">{see_pages()}</span>
+                </div>
+                <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow" />
+            </div>
         </div>
     )
 }

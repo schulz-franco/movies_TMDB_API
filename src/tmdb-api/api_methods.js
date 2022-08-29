@@ -12,7 +12,7 @@ const options = {
 export async function get_movies(page, query) {
   try {
     const response = await axios.get('https://api.themoviedb.org/3/discover/movie?page=' + page + query, options);
-    return response.data.results
+    return response.data
   } catch (error) {
     console.error(error);
   }
