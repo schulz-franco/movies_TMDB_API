@@ -417,4 +417,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 5rem;
   color: #4F6B94; }
 
+.movies-main-container .pagination-container .invalid {
+  opacity: 0; }
+
 /*# sourceMappingURL=style.css.map */

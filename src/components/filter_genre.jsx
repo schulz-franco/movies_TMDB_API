@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { get_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
+import { useParams } from 'react-router-dom';
 
-export default function Movies() {
+export default function Genres() {
 
     let first_state = {
         id: "",
@@ -10,25 +11,11 @@ export default function Movies() {
         release_date: "",
         title: ""
     }
-
+    
+    const {id, genre_name} = useParams();
     const [movies, set_movies] = useState([first_state])
-    const [category, set_category] = useState("latest")
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
-
-    function change_category(ev, button) {
-        if (button == "ranking") {
-            set_category("ranking")
-            ev.target.previousSibling.classList.remove("category-current")
-        } else {
-            set_category("latest")
-            ev.target.nextSibling.classList.remove("category-current")
-        }
-        ev.target.classList.add("category-current")
-        if (page > 1) {
-            set_page(1)
-        }
-    }
 
     function control_page(ev, option) {
         if (option == "next") {
@@ -44,48 +31,34 @@ export default function Movies() {
         }
     }
 
-
     useEffect(()=> {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
-        if (category == "latest") {
-            get_movies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
-                set_total_pages(res.total_pages)
-                set_movies(res.results)
-                if (page >= res.total_pages) {
-                    arrow2.classList.add("invalid")
-                    set_page(res.total_pages)
-                } else {
-                    arrow2.classList.remove("invalid")
-                }
-            })
-        } else {
-            get_movies(page, "&sort_by=popularity.desc").then(res => {
-                set_total_pages(res.total_pages)
-                set_movies(res.results)
-                if (page >= res.total_pages) {
-                    arrow2.classList.add("invalid")
-                    set_page(res.total_pages)
-                } else {
-                    arrow2.classList.remove("invalid")
-                }
-            })
-        }
+        get_movies(page, "&with_genres=" + id).then(res => {
+            set_total_pages(res.total_pages)
+            set_movies(res.results)
+            if (page >= res.total_pages) {
+                arrow2.classList.add("invalid")
+                set_page(res.total_pages)
+            } else {
+                arrow2.classList.remove("invalid")
+            }
+        })
         if (page <= 1) {
             arrow1.classList.add("invalid")
             set_page(1)
         } else {
             arrow1.classList.remove("invalid")
         }
-    }, [page, category])
+    }, [page, id])
+
+    useEffect(()=> {
+        set_page(1)
+    }, [id])
 
     return(
         <div className="movies-main-container">
-            <span className="movies-title">Online movies</span>
-            <div className="category-container">
-                <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
-            </div>
+            <span style={{marginBottom: ".8rem"}} className="movies-title">{genre_name}</span>
             <div className="movies-list-container">
                 {movies.map(movie => {
                     return(

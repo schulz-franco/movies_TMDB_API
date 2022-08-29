@@ -72,7 +72,7 @@ export default function Navbar() {
                     <div className="navbar-genres-container">
                         {genres.map(genre => {
                             return(
-                                <Link onClick={control_navbar} className="genre-link" to={"/movies/genres/" + genre.id}>{genre.name}</Link>
+                                <Link onClick={control_navbar} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
                             )
                         })}
                     </div>
