@@ -14,7 +14,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", (e)=> {
         try {
-            if (window.scrollY > 50) {
+            if (window.scrollY > 10) {
                 navbar_ref.current.style.backgroundColor = "#080f28"
             } else if (window.scrollY < 50) {
                 navbar_ref.current.style.backgroundColor = ""

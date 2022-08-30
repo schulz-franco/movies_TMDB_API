@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { get_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { Link } from "react-router-dom"
+import Loader from "../assets/loading.gif"
 
 export default function Movies() {
 
@@ -16,6 +17,7 @@ export default function Movies() {
     const [category, set_category] = useState("latest")
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
+    const [loading, set_loading] = useState(true)
 
     function change_category(ev, button) {
         if (button == "ranking") {
@@ -29,10 +31,11 @@ export default function Movies() {
         if (page > 1) {
             set_page(1)
         }
+        set_loading(true)
     }
 
     function control_page(ev, option) {
-        window.scrollTo(0, 0)
+        set_loading(true)
         if (option == "next") {
             return set_page(page + 1)
         } else return set_page(page - 1)
@@ -72,6 +75,11 @@ export default function Movies() {
                 }
             })
         }
+        if (loading) {
+            setTimeout(()=> {
+                set_loading(false)
+            }, 3000)
+        }
         if (page <= 1) {
             arrow1.classList.add("invalid")
             set_page(1)
@@ -80,33 +88,66 @@ export default function Movies() {
         }
     }, [page, category])
 
-    return(
-        <div className="movies-main-container">
-            <span className="movies-title">Online movies</span>
-            <div className="category-container">
-                <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
-            </div>
-            <div className="movies-list-container">
-                {movies.map(movie => {
-                    return(
-                        <Link to={"/movie/" + movie.id} className="movie-container">
-                            <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                            <span className="movie-title">{movie.title}</span>
-                            <span className="movie-year">{movie.release_date.slice(0, 4)}</span>
-                        </Link>
-                    )
-                })}
-            </div>
-            <div className="pagination-container">
-                <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                <div className="pages">
-                    <span className="page">{page}</span>
-                    <span>of</span>
-                    <span className="total">{see_pages()}</span>
+    if (loading) {
+        return(
+            <div className="movies-main-container">
+                <span className="movies-title">Online movies</span>
+                <div className="category-container">
+                    <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
+                    <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
                 </div>
-                <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
+                <div className="movies-list-container">
+                    {movies.map(movie => {
+                        return(
+                            <Link to={"/movie/" + movie.id} className="movie-container">
+                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
+                                <span className="movie-title">{movie.title}</span>
+                            </Link>
+                        )
+                    })}
+                </div>
+                <div className="pagination-container">
+                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
+                    <div className="pages">
+                        <span className="page">{page}</span>
+                        <span>of</span>
+                        <span className="total">{see_pages()}</span>
+                    </div>
+                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
+                </div>
+                <div className="loading">
+                    <img src={Loader} alt="Loading..." />
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return(
+            <div className="movies-main-container">
+                <span className="movies-title">Online movies</span>
+                <div className="category-container">
+                    <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
+                    <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
+                </div>
+                <div className="movies-list-container">
+                    {movies.map(movie => {
+                        return(
+                            <Link to={"/movie/" + movie.id} className="movie-container">
+                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
+                                <span className="movie-title">{movie.title}</span>
+                            </Link>
+                        )
+                    })}
+                </div>
+                <div className="pagination-container">
+                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
+                    <div className="pages">
+                        <span className="page">{page}</span>
+                        <span>of</span>
+                        <span className="total">{see_pages()}</span>
+                    </div>
+                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
+                </div>
+            </div>
+        )
+    }
 }
