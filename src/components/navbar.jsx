@@ -46,13 +46,13 @@ export default function Navbar() {
     }
 
     function search() {
-        window.location.href = "/search/" + document.querySelector(".navbar-menu-container .search-bar .search-input").value
+        window.location.href = "/movies/search/" + document.querySelector(".navbar-menu-container .search-bar .search-input").value
     }
 
     return(
         <div className="navbar-container" ref={navbar_ref}>
             <img className="logo" src={logo} alt="Movies" />
-            <span className="logo-title">Movies</span>
+            <span className="logo-title">MDB</span>
             <span/>
             {open_button()}
             <div className="circle"/>

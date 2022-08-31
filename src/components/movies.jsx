@@ -6,14 +6,7 @@ import Loader from "../assets/loading.gif"
 
 export default function Movies() {
 
-    let first_state = {
-        id: "",
-        poster_path: "",
-        release_date: "",
-        title: ""
-    }
-
-    const [movies, set_movies] = useState([first_state])
+    const [movies, set_movies] = useState([{}])
     const [category, set_category] = useState("latest")
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
@@ -75,16 +68,16 @@ export default function Movies() {
                 }
             })
         }
-        if (loading) {
-            setTimeout(()=> {
-                set_loading(false)
-            }, 3000)
-        }
         if (page <= 1) {
             arrow1.classList.add("invalid")
             set_page(1)
         } else {
             arrow1.classList.remove("invalid")
+        }
+        if (loading) {
+            setTimeout(()=> {
+                set_loading(false)
+            }, 3000)
         }
     }, [page, category])
 

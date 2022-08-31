@@ -1,0 +1,30 @@
+.error-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    align-content: center;
+}
+
+.error-mobile {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    justify-content: center;
+    justify-items: center;
+}
+
+.error-mobile .error {
+    color: #ffffff;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 500;
+    padding: 6px 30px 0 30px;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 10px;
+}

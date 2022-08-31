@@ -36,6 +36,16 @@ export async function get_genres() {
   }
 }
 
+export async function get_movie(id, query) {
+  try {
+    const response = await axios.get('https://api.themoviedb.org/3/movie/' + id + query, options);
+    return response.data
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
 export async function get_news(amount) {
   try {
     const response = await axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28', options);

@@ -1,0 +1,110 @@
+.movie-page-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+}
+
+.movie-page-container .header-container {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content;
+    column-gap: 1rem;
+    margin-top: 100px;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.movie-page-container .header-container .poster {
+    width: 120px;
+    height: auto;
+    border-radius: .2rem;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.178);
+}
+
+.movie-page-container .header-container .title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.movie-page-container .header-container .vote-container {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-auto-rows: min-content;
+    align-items: center;
+    margin-top: .2rem;
+}
+
+.movie-page-container .header-container .title-container {
+    padding-top: .5rem;
+}
+
+.movie-page-container .header-container .vote-container .vote {
+    font-size: 1.2rem;
+    color: #edb709;
+}
+
+.movie-page-container .header-container .vote-container .star {
+    font-size: 1.8rem;
+    color: #edb709;
+    margin-right: .3rem;
+}
+
+.movie-page-container .info-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+}
+
+
+.movie-page-container .info-container .basic-info {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content;
+    justify-content: center;
+    background-color: hsl(227, 50%, 20%);
+    row-gap: .2rem;
+    padding: .5rem 0;
+}
+
+.movie-page-container .info-container .basic-info .dates {
+    display: grid;
+    grid-template-columns: min-content min-content min-content;
+    grid-template-rows: min-content;
+    justify-content: center;
+}
+
+.movie-page-container .info-container .basic-info .dates .language {
+    margin-right: .6rem;
+}
+
+.movie-page-container .info-container .basic-info span {
+    color: #fff;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.movie-page-container .info-container .texts-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    padding: 1.5rem;
+    row-gap: 1rem;
+}
+
+.movie-page-container .info-container .texts-container .title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.movie-page-container .info-container .texts-container .text {
+    color: #fff;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    font-weight: 400;
+}

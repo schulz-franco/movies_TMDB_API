@@ -5,16 +5,9 @@ import { useParams, Link } from 'react-router-dom';
 import Loader from "../assets/loading.gif"
 
 export default function Genres() {
-
-    let first_state = {
-        id: "",
-        poster_path: "",
-        release_date: "",
-        title: ""
-    }
     
     const {id, genre_name} = useParams();
-    const [movies, set_movies] = useState([first_state])
+    const [movies, set_movies] = useState([{}])
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
     const [loading, set_loading] = useState(true)

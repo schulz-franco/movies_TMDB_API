@@ -3,6 +3,13 @@
 If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
 Go to src/tmdb-api/api_methods.js and paste your token into the variable called "api_key"
 
+# Pendings list
+
+- Finish the information section of each movie
+- Make the staff section
+- Reform all code
+- Responsive design
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

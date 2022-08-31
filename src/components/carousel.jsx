@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { get_news } from "../tmdb-api/api_methods"
 import { FaPlay } from "react-icons/fa"
 import { CSSTransition } from "react-transition-group"
+import { Link } from "react-router-dom"
 
 function Movie_carousel(props) {
 
@@ -20,7 +21,7 @@ function Movie_carousel(props) {
             <p className="movie-overview">{props.overview}</p>
             <div className="movie-go-button">
                 <FaPlay className="movie-go-button-icon" />
-                <span>Watch movie</span>
+                <Link to={"/movie/" + props.id}>See more</Link>
             </div>
         </div>
     )
@@ -29,6 +30,7 @@ function Movie_carousel(props) {
 export default function Carousel() {
 
     let first_state = {
+        id: "",
         poster_path: "",
         title: "",
         vote_average: "",
@@ -79,6 +81,7 @@ export default function Carousel() {
                     return(
                         <CSSTransition in={(current_item == index)} timeout={300} classNames={'carousel-anim'} unmountOnExit>
                             <Movie_carousel
+                                id={movie.id}
                                 backdrop_url={movie.poster_path}
                                 title={movie.title}
                                 vote={movie.vote_average}
