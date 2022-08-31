@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { get_movie } from "../tmdb-api/api_methods"
 import Loader from "../assets/loading.gif"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
+import No_img from "../assets/no_image.jpg"
 
 export default function Movie() {
 
@@ -49,22 +50,52 @@ export default function Movie() {
                 <div className="info-container">
                     <div className="basic-info">
                         <div className="dates">
-                            <span>{(movie.release_date != "") ? movie.release_date.slice(0, 10) : "without date"}</span>
+                            <span>{(movie.release_date != "") ? movie.release_date.slice(0, 10) : "Without date"}</span>
                             <span className="language">({movie.original_language.toUpperCase()})</span>
-                            <span>‣ {(movie.runtime != 0) ? (Math.trunc(movie.runtime/60) + "h " + movie.runtime%60 + "m") : "without duration"}</span>
+                            <span>‣ {(movie.runtime != 0) ? (Math.trunc(movie.runtime/60) + "h " + movie.runtime%60 + "m") : "Without duration"}</span>
                         </div>
                         <span>{(movie.genres.length != 0) && movie.genres.map((genre, index)=> {
                             if (index != (movie.genres.length - 1)) {
-                                return genre.name + " - "
+                                return genre.name + ", "
                             }
                             return genre.name
                         })}</span>
                     </div>
                     <div className="texts-container">
-                        <span className="text">{(movie.tagline != "") ? movie.tagline : "Without tagline"}</span>
+                        <span className="tagline">{(movie.tagline != "") ? movie.tagline : "Without tagline"}</span>
                         <span className="title">Overview</span>
                         <span className="text">{movie.overview}</span>
+                        <div className="director-container">
+                            {credits && credits.crew.map(person => {
+                                if (person.job == "Director") {
+                                    return(
+                                        <div>
+                                            <span className="director">{person.original_name}</span>
+                                            <span className="job">{person.job}</span>
+                                        </div>
+                                    )
+                                }
+                            })}
+                        </div>
                     </div>
+                    {(credits) && 
+                        <div className="cast-container">
+                            <span className="title">Top Billed Cast</span>
+                            <div className="items">
+                                {credits.cast.map((person, index) => {
+                                    if (index < 9) {
+                                        return(
+                                            <div className="item">
+                                                {(person.profile_path) ? <img src={"https://image.tmdb.org/t/p/original" + person.profile_path} alt={person.original_name} /> : <img src={No_img} alt="Without image" />}
+                                                <Link className="name" to={"/person/" + person.id}>{person.original_name}</Link>
+                                                <span className="job">{person.character}</span>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                            </div>
+                        </div>
+                    }
                 </div>
                 </>
             }
