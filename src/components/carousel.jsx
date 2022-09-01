@@ -36,8 +36,10 @@ export default function Carousel() {
 
     useEffect(()=> {
         setTimeout(()=> {
-            carousel_move(current_item, set_current_item)
-            carousel_change_indicators(carousel_indicators, current_item)
+            if (carousel_indicators) {
+                carousel_move(current_item, set_current_item)
+                carousel_change_indicators(carousel_indicators, current_item)
+            }
         }, 5000)
     }, [current_item])
 

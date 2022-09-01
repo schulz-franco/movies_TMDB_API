@@ -65,7 +65,7 @@ export default function Genres() {
     } else if (!waiting) {
         return(
             <div style={{marginTop: "6rem"}} className="movies-main-container">
-                <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">No results</span>
+                <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">Without results</span>
             </div>
         )
     }
