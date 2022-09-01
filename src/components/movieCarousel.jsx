@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 import { FaPlay } from "react-icons/fa"
 
-const images_url = "https://image.tmdb.org/t/p/w500"
+const imagesUrl = "https://image.tmdb.org/t/p/w500"
 
-export default function Movie_carousel(props) {
+export default function MovieCarousel(props) {
 
     let background_style = {
-        backgroundImage: "url(" + images_url + props.backdrop_url + ")"
+        backgroundImage: "url(" + imagesUrl + props.backdrop_url + ")"
     }
 
     return(

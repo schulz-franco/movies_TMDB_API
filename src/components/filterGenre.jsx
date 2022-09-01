@@ -1,35 +1,17 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { controlPage, seePages } from "./functions";
-import useMovies from "../hooks/useMovies";
+import useGenres from '../hooks/useGenres';
 import No_img from "../assets/no_image.jpg"
 
-function change_category(ev, button, setCategory, page, setPage) {
-    if (button == "ranking") {
-        setCategory("ranking")
-        ev.target.previousSibling.classList.remove("category-current")
-    } else {
-        setCategory("latest")
-        ev.target.nextSibling.classList.remove("category-current")
-    }
-    ev.target.classList.add("category-current")
-    if (page > 1) {
-        setPage(1)
-    }
-}
+export default function Genres() {
 
-export default function Movies() {
-
-    const { movies, setCategory, page, setPage, totalPages } = useMovies()
+    const { movies, genreName, page, totalPages, setPage } = useGenres()
 
     if (movies) {
         return(
             <div className="movies-main-container">
-                <span className="movies-title">Online movies</span>
-                <div className="category-container">
-                    <span onClick={(ev)=> change_category(ev, "latest", setCategory, page, setPage)} className="category category-current">Latest</span>
-                    <span onClick={(ev)=> change_category(ev, "ranking", setCategory, page, setPage)} className="category">Popular</span>
-                </div>
+                <span style={{marginBottom: ".8rem"}} className="movies-title">{genreName}</span>
                 <div className="movies-list-container">
                     {movies.map(movie => {
                         return(

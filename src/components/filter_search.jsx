@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom';
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import searchMovies from "../services/searchMovies"
-import { control_page, see_pages, control_arrows } from "./functions";
+import { controlPage, seePages, controlArrows } from "./functions";
 import No_img from "../assets/no_image.jpg"
 
 export default function Genres() {
@@ -26,7 +26,7 @@ export default function Genres() {
             }
         })
         if (total_pages != 1) {
-            control_arrows(arrow1, arrow2, page, set_page, total_pages)
+            controlArrows(arrow1, arrow2, page, set_page, total_pages)
         }
     }, [page, search, total_pages])
 
@@ -51,13 +51,13 @@ export default function Genres() {
                 </div>
                 {(total_pages != 1) && 
                     <div className="pagination-container">
-                        <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev", set_page, page)} className="arrow arrow1" />
+                        <BiLeftArrowAlt onClick={(ev) => controlPage(ev, "prev", set_page, page)} className="arrow arrow1" />
                         <div className="pages">
                             <span className="page">{page}</span>
                             <span>of</span>
-                            <span className="total">{see_pages(total_pages)}</span>
+                            <span className="total">{seePages(total_pages)}</span>
                         </div>
-                        <BiRightArrowAlt onClick={(ev) => control_page(ev, "next", set_page, page)} className="arrow arrow2" />
+                        <BiRightArrowAlt onClick={(ev) => controlPage(ev, "next", set_page, page)} className="arrow arrow2" />
                     </div>
                 }
             </div>

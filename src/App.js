@@ -18,7 +18,7 @@ export default function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
-            <Route path="/movies/genres/:id/:genre_name" element={<Suspense fallback={<Loading />}><Genre /></Suspense>} />
+            <Route path="/movies/genres/:id/:genreName" element={<Suspense fallback={<Loading />}><Genre /></Suspense>} />
             <Route path="/movies/search/:search" element={<Suspense fallback={<Loading />}><Search /></Suspense>} />
             <Route path="/movie/:id" element={<Suspense fallback={<Loading />}><MovieInfo /></Suspense>} />
           </Routes>

@@ -1,23 +1,22 @@
-import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
-import getGenres from "../services/getGenres"
 import logo from "../assets/logo.png"
+import useNavbar from "../hooks/useNavbar"
 
-const open_button = (open, set_open, control_navbar)=> {
+const open_button = (open, setOpen, controlNavbar)=> {
     if (open) {
-        return <IoMdClose onClick={()=> control_navbar(open, set_open)} className="menu-icon"/>
+        return <IoMdClose onClick={()=> controlNavbar(open, setOpen)} className="menu-icon"/>
     } else {
-        return <IoMdMenu onClick={()=> control_navbar(open, set_open)} className="menu-icon"/>
+        return <IoMdMenu onClick={()=> controlNavbar(open, setOpen)} className="menu-icon"/>
     }
 }
 
-const control_navbar = (open, set_open)=> {
+const controlNavbar = (open, setOpen)=> {
     if (open) {
-        set_open(false)
+        setOpen(false)
     } else {
-        set_open(true)
+        setOpen(true)
     }
 }
 
@@ -27,36 +26,17 @@ const search = ()=> {
 
 export default function Navbar() {
 
-    const [open, set_open] = useState(false)
-    const [genres, set_genres] = useState(null)
-    const navbar_ref = useRef(null)
-
-    window.addEventListener("scroll", (e)=> {
-        try {
-            if (window.scrollY > 10) {
-                navbar_ref.current.style.backgroundColor = "#080f28"
-            } else if (window.scrollY < 50) {
-                navbar_ref.current.style.backgroundColor = ""
-            }
-        } catch {
-        }
-    }, false)
-
-    useEffect(()=> {
-        getGenres().then(res => {
-            set_genres(res)
-        })
-    }, [])
+    const { open, setOpen, genres, navbarRef } = useNavbar()
 
     return(
-        <div className="navbar-container" ref={navbar_ref}>
+        <div className="navbar-container" ref={navbarRef}>
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">MDB</span>
             <span/>
-            {open_button(open, set_open, control_navbar)}
+            {open_button(open, setOpen, controlNavbar)}
             <div className="circle"/>
             <CSSTransition in={open} timeout={200} classNames={'black-background-anim'} unmountOnExit>
-                <div onClick={()=> control_navbar(open, set_open)} className="black-background"></div>
+                <div onClick={()=> controlNavbar(open, setOpen)} className="black-background"></div>
             </CSSTransition>
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'}>
                 <div className="background-title"></div>
@@ -68,7 +48,7 @@ export default function Navbar() {
                         <IoMdSearch onClick={search} className="search-icon"/>
                     </div>
                     <Link onClick={()=> {
-                        control_navbar(open, set_open)
+                        controlNavbar(open, setOpen)
                         window.scrollTo(0 ,0)
                     }} className="navbar-link" to="/">Home</Link>
                     <div className="navbar-genres-title-container">
@@ -78,7 +58,7 @@ export default function Navbar() {
                     <div className="navbar-genres-container">
                         {genres && genres.map(genre => {
                             return(
-                                <Link onClick={()=> control_navbar(open, set_open)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
+                                <Link onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
                             )
                         })}
                     </div>

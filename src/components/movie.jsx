@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import useMovie from "../hooks/useMovie"
+import { Link } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
-import getMovie from "../services/getMovie"
 import No_img from "../assets/no_image.jpg"
 
 const enter_recommendation = ()=> {
@@ -10,26 +9,7 @@ const enter_recommendation = ()=> {
 
 export default function Movie() {
 
-    const {id} = useParams()
-    const [movie, set_movie] = useState(null)
-    const [credits, set_credits] = useState(null)
-    const [images, set_images] = useState(null)
-    const [recommendations, set_recommendations] = useState(null)
-
-    useEffect(()=> {
-        getMovie(id, "").then(res=> {
-            set_movie(res)
-        })
-        getMovie(id, "/credits").then(res=> {
-            set_credits(res)
-        })
-        getMovie(id, "/images?include_image_language=en").then(res=> {
-            set_images(res)
-        })
-        getMovie(id, "/recommendations").then(res=> {
-            set_recommendations(res)
-        })
-    }, [id])
+    const { movie, credits, images, recommendations } = useMovie()
 
     return(
         <div className="movie-page-container">
