@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
-import { get_movie } from "../tmdb-api/api_methods"
-import Loader from "../assets/loading.gif"
 import { Link, useParams } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
+import { get_movie } from "../tmdb-api/api_methods"
 import No_img from "../assets/no_image.jpg"
+
+const enter_recommendation = ()=> {
+    window.scrollTo(0, 0)
+}
 
 export default function Movie() {
 
@@ -12,12 +15,6 @@ export default function Movie() {
     const [credits, set_credits] = useState(null)
     const [images, set_images] = useState(null)
     const [recommendations, set_recommendations] = useState(null)
-    const [loading, set_loading] = useState(true)
-
-    function enter_recommendation() {
-        set_loading(true)
-        window.scrollTo(0, 0)
-    }
 
     useEffect(()=> {
         get_movie(id, "").then(res=> {
@@ -25,33 +22,20 @@ export default function Movie() {
         })
         get_movie(id, "/credits").then(res=> {
             set_credits(res)
-            console.log(res)
         })
         get_movie(id, "/images?include_image_language=en").then(res=> {
             set_images(res)
-            console.log(res)
         })
         get_movie(id, "/recommendations").then(res=> {
             set_recommendations(res)
-            console.log(res)
         })
-        if (loading) {
-            setTimeout(()=> {
-                set_loading(false)
-            }, 4000)
-        }
     }, [id])
 
     return(
         <div className="movie-page-container">
-            {(loading) && 
-                <div className="loading">
-                    <img src={Loader} alt="Loading..." />
-                </div>
-            }
             {movie && 
                 <>
-                <div style={movie.backdrop_path && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")"}} className="header-container">
+                <div style={movie.backdrop_path && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500" + movie.backdrop_path + ")"}} className="header-container">
                     <img className="poster" src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} alt={movie.title} />
                     <div className="title-container">
                         <span className="title">{movie.title}</span>
@@ -102,7 +86,7 @@ export default function Movie() {
                                     if (index < 9) {
                                         return(
                                             <div className="item">
-                                                {(person.profile_path) ? <img className="img-person" src={"https://image.tmdb.org/t/p/original" + person.profile_path} alt={person.original_name} /> : <img className="img-person" src={No_img} alt="Without image" />}
+                                                {(person.profile_path) ? <img className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} /> : <img className="img-person" src={No_img} alt="Without image" />}
                                                 <Link className="name" to={"/person/" + person.id}>{person.original_name}</Link>
                                                 <span className="job">{person.character}</span>
                                             </div>
@@ -119,13 +103,13 @@ export default function Movie() {
                             <div className="items">
                                 {(images.backdrops.length != 0) && images.backdrops.map(image => {
                                     return(
-                                        <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/original" + image.file_path} alt={movie.title}/>
+                                        <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title}/>
                                     )
                                 })}
                                 {(images.posters.length != 0) && images.posters.map((image, index) => {
                                     if (index < 10) {
                                         return(
-                                            <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/original" + image.file_path} alt={movie.title}/>
+                                            <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title}/>
                                         )
                                     }
                                 })}
@@ -139,7 +123,7 @@ export default function Movie() {
                                 {recommendations.results.map(recommendation => {
                                     return(
                                         <Link style={{marginBottom: ".5rem"}} onClick={enter_recommendation} to={"/movie/" + recommendation.id}>
-                                            {(recommendation.poster_path) ? <img width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/original" + recommendation.poster_path} alt={movie.title}/> : <img width={150} height={200} className="img-movie" src={No_img} alt={movie.title}/>}
+                                            {(recommendation.poster_path) ? <img width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={movie.title}/> : <img width={150} height={200} className="img-movie" src={No_img} alt={movie.title}/>}
                                             <span className="recommendation-movie-title">{recommendation.title}</span>
                                         </Link>
                                     )

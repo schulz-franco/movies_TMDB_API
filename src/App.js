@@ -1,15 +1,16 @@
-import { 
-  BrowserRouter,
-  Routes,
-  Route 
-} from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Loading from "./components/loading"
 import Navbar from "./components/navbar"
-import Carousel from "./components/carousel"
-import Movies from "./components/movies"
-import Genres from "./components/filter_genre"
-import Search from "./components/filter_search"
-import Movie from "./components/movie"
-import Res_error from "./components/res_error"
+
+const Res_error = lazy(()=> import("./components/res_error"))
+const Carousel = lazy(()=> import("./components/carousel"))
+const Movies = lazy(()=> import("./components/movies"))
+const Genres = lazy(()=> import("./components/filter_genre"))
+const Search = lazy(()=> import("./components/filter_search"))
+const Movie = lazy(()=> import("./components/movie"))
+
 
 export default function App() {
   if (window.innerWidth <= 425) {
@@ -17,14 +18,14 @@ export default function App() {
       <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path='/' element={<><Carousel /><Movies /></>} />
-            <Route path="/movies/genres/:id/:genre_name" element={<><Carousel /><Genres /></>} />
-            <Route path="/movies/search/:search" element={<Search />} />
-            <Route path="/movie/:id" element={<Movie />} />
+            <Route path='/' element={<Suspense fallback={<Loading />}><Carousel /><Movies /></Suspense>} />
+            <Route path="/movies/genres/:id/:genre_name" element={<Suspense fallback={<Loading />}><Carousel /><Genres /></Suspense>} />
+            <Route path="/movies/search/:search" element={<Suspense fallback={<Loading />}><Search /></Suspense>} />
+            <Route path="/movie/:id" element={<Suspense fallback={<Loading />}><Movie /></Suspense>} />
           </Routes>
       </BrowserRouter>
     );
   } else {
-    return <Res_error />
+    return <Suspense fallback={<Loading />}><Res_error /></Suspense>
   }
 }

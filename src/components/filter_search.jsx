@@ -1,76 +1,41 @@
 import { useEffect, useState } from "react"
-import { search_movies } from "../tmdb-api/api_methods"
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { useParams, Link } from 'react-router-dom';
-import Loader from "../assets/loading.gif"
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
+import { search_movies } from "../tmdb-api/api_methods"
+import { control_page, see_pages, control_arrows } from "./functions";
 import No_img from "../assets/no_image.jpg"
 
 export default function Genres() {
     
     const {search} = useParams();
-    const [results, set_results] = useState(false)
-    const [movies, set_movies] = useState([{}])
+    const [movies, set_movies] = useState(null)
     const [page, set_page] = useState(1)
     const [total_pages, set_total_pages] = useState(null)
-    const [loading, set_loading] = useState(true)
-
-    function control_page(ev, option) {
-        set_loading(true)
-        if (option == "next") {
-            return set_page(page + 1)
-        } else return set_page(page - 1)
-    }
-
-    function see_pages() {
-        if (total_pages > 999) {
-            return "..."
-        } else {
-            return total_pages
-        }
-    }
+    const [waiting, set_waiting] = useState(true)
 
     useEffect(()=> {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
-        search_movies(page, "&query=" + search).then(res => {
+        search_movies(page, search).then(res => {
             if (res.total_pages) {
                 set_total_pages(res.total_pages)
                 set_movies(res.results)
-                set_results(true)
-                if (loading) {
-                    setTimeout(()=> {
-                        set_loading(false)
-                    }, 3000)
-                }
+                set_waiting(false)
             } else {
-                set_results(false)
-                setTimeout(()=> {
-                    set_loading(false)
-                }, 3000)
+                set_waiting(false)
             }
         })
-        if (results && total_pages != 1) {
-            if (page <= 1) {
-                arrow1.classList.add("invalid")
-                set_page(1)
-            } else {
-                arrow1.classList.remove("invalid")
-            }
-            if (page >= total_pages) {
-                arrow2.classList.add("invalid")
-                set_page(total_pages)
-            } else {
-                arrow2.classList.remove("invalid")
-            }
+        if (total_pages != 1) {
+            control_arrows(arrow1, arrow2, page, set_page, total_pages)
         }
-    }, [page, search, loading])
+    }, [page, search, total_pages])
 
     useEffect(()=> {
         set_page(1)
         window.scrollTo(0, 0)
     }, [search])
 
-    if (results) {
+    if (movies) {
         return(
             <div style={{marginTop: "6.5rem"}} className="movies-main-container">
                 <span style={{marginBottom: "1rem", fontSize: "1.5rem"}} className="movies-title">Searching: {search}</span>
@@ -86,31 +51,21 @@ export default function Genres() {
                 </div>
                 {(total_pages != 1) && 
                     <div className="pagination-container">
-                        <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
+                        <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev", set_page, page)} className="arrow arrow1" />
                         <div className="pages">
                             <span className="page">{page}</span>
                             <span>of</span>
-                            <span className="total">{see_pages()}</span>
+                            <span className="total">{see_pages(total_pages)}</span>
                         </div>
-                        <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                    </div>
-                }
-                {loading &&
-                    <div className="loading">
-                        <img src={Loader} alt="Loading..." />
+                        <BiRightArrowAlt onClick={(ev) => control_page(ev, "next", set_page, page)} className="arrow arrow2" />
                     </div>
                 }
             </div>
         )
-    } else {
+    } else if (!waiting) {
         return(
             <div style={{marginTop: "6rem"}} className="movies-main-container">
                 <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">No results</span>
-                {loading &&
-                    <div className="loading">
-                        <img src={Loader} alt="Loading..." />
-                    </div>
-                }
             </div>
         )
     }
