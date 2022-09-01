@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
-import { get_genres } from "../tmdb-api/api_methods"
+import getGenres from "../services/getGenres"
 import logo from "../assets/logo.png"
 
 const open_button = (open, set_open, control_navbar)=> {
@@ -43,7 +43,7 @@ export default function Navbar() {
     }, false)
 
     useEffect(()=> {
-        get_genres().then(res => {
+        getGenres().then(res => {
             set_genres(res)
         })
     }, [])

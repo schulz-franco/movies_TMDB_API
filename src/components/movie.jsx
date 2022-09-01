@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
-import { get_movie } from "../tmdb-api/api_methods"
+import getMovie from "../services/getMovie"
 import No_img from "../assets/no_image.jpg"
 
 const enter_recommendation = ()=> {
@@ -17,16 +17,16 @@ export default function Movie() {
     const [recommendations, set_recommendations] = useState(null)
 
     useEffect(()=> {
-        get_movie(id, "").then(res=> {
+        getMovie(id, "").then(res=> {
             set_movie(res)
         })
-        get_movie(id, "/credits").then(res=> {
+        getMovie(id, "/credits").then(res=> {
             set_credits(res)
         })
-        get_movie(id, "/images?include_image_language=en").then(res=> {
+        getMovie(id, "/images?include_image_language=en").then(res=> {
             set_images(res)
         })
-        get_movie(id, "/recommendations").then(res=> {
+        getMovie(id, "/recommendations").then(res=> {
             set_recommendations(res)
         })
     }, [id])

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom';
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { get_movies } from "../tmdb-api/api_methods"
+import getMovies from "../services/getMovies"
 import { control_page, see_pages, control_arrows } from "./functions";
 import No_img from "../assets/no_image.jpg"
 
@@ -15,7 +15,7 @@ export default function Genres() {
     useEffect(()=> {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
-        get_movies(page, "&with_genres=" + id).then(res => {
+        getMovies(page, "&with_genres=" + id).then(res => {
             set_total_pages(res.total_pages)
             set_movies(res.results)
         })

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { CSSTransition } from "react-transition-group"
-import { get_news } from "../tmdb-api/api_methods"
+import getNews from "../services/getNews"
 import Movie_carousel from "./movie_carousel"
 
 const carousel_move = (current_item, set_current_item)=> {
@@ -29,7 +29,7 @@ export default function Carousel() {
     const carousel_indicators = useRef(null)
 
     useEffect(()=> {
-        get_news(5).then(res => {
+        getNews(5).then(res => {
             set_movies_news(res)
         })
     }, [])

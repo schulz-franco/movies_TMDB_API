@@ -1,7 +1,7 @@
 # How to use
 
 If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
-Go to src/tmdb-api/api_methods.js and paste your token into the variable called "api_key"
+Go to src/services/options.js and paste your token into the variable called "api_key"
 
 # Pendings list
 
@@ -9,6 +9,7 @@ Go to src/tmdb-api/api_methods.js and paste your token into the variable called 
 - Make the staff section
 - Reform all code
 - Responsive design
+- Clean architecture
 
 # Getting Started with Create React App
 

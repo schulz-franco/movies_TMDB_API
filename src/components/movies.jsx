@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { get_movies } from "../tmdb-api/api_methods"
+import getMovies from "../services/getMovies"
 import { control_page, see_pages, control_arrows } from "./functions";
 import No_img from "../assets/no_image.jpg"
 
@@ -30,12 +30,12 @@ export default function Movies() {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
         if (category == "latest") {
-            get_movies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
+            getMovies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
                 set_total_pages(res.total_pages)
                 set_movies(res.results)
             })
         } else {
-            get_movies(page, "&sort_by=popularity.desc").then(res => {
+            getMovies(page, "&sort_by=popularity.desc").then(res => {
                 set_total_pages(res.total_pages)
                 set_movies(res.results)
             })
