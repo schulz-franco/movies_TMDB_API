@@ -3,6 +3,7 @@ import { get_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { useParams, Link } from 'react-router-dom';
 import Loader from "../assets/loading.gif"
+import No_img from "../assets/no_image.jpg"
 
 export default function Genres() {
     
@@ -59,58 +60,33 @@ export default function Genres() {
         set_loading(true)
     }, [id])
 
-    if (loading) {
-        return(
-            <div className="movies-main-container">
-                <span style={{marginBottom: ".8rem"}} className="movies-title">{genre_name}</span>
-                <div className="movies-list-container">
-                    {movies.map(movie => {
-                        return(
-                            <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                                <span className="movie-title">{movie.title}</span>
-                            </Link>
-                        )
-                    })}
+    return(
+        <div className="movies-main-container">
+            <span style={{marginBottom: ".8rem"}} className="movies-title">{genre_name}</span>
+            <div className="movies-list-container">
+                {movies.map(movie => {
+                    return(
+                        <Link to={"/movie/" + movie.id} className="movie-container">
+                            {movie.poster_path ? <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} /> : <img src={No_img} alt={movie.title} />}
+                            <span className="movie-title">{movie.title}</span>
+                        </Link>
+                    )
+                })}
+            </div>
+            <div className="pagination-container">
+                <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
+                <div className="pages">
+                    <span className="page">{page}</span>
+                    <span>of</span>
+                    <span className="total">{see_pages()}</span>
                 </div>
-                <div className="pagination-container">
-                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                    <div className="pages">
-                        <span className="page">{page}</span>
-                        <span>of</span>
-                        <span className="total">{see_pages()}</span>
-                    </div>
-                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                </div>
+                <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
+            </div>
+            {loading && 
                 <div className="loading">
                     <img src={Loader} alt="Loading..." />
                 </div>
-            </div>
-        )
-    } else {
-        return(
-            <div className="movies-main-container">
-                <span style={{marginBottom: ".8rem"}} className="movies-title">{genre_name}</span>
-                <div className="movies-list-container">
-                    {movies.map(movie => {
-                        return(
-                            <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                                <span className="movie-title">{movie.title}</span>
-                            </Link>
-                        )
-                    })}
-                </div>
-                <div className="pagination-container">
-                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                    <div className="pages">
-                        <span className="page">{page}</span>
-                        <span>of</span>
-                        <span className="total">{see_pages()}</span>
-                    </div>
-                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                </div>
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }

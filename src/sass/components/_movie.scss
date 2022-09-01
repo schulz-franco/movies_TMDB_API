@@ -23,7 +23,7 @@
 }
 
 .movie-page-container .header-container .title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #fff;
     font-weight: 600;
 }
@@ -41,12 +41,12 @@
 }
 
 .movie-page-container .header-container .vote-container .vote {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #edb709;
 }
 
 .movie-page-container .header-container .vote-container .star {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #edb709;
     margin-right: .3rem;
 }
@@ -171,7 +171,6 @@
     overflow-x: auto;
     padding-bottom: .5rem;
     padding-left: 1rem;
-    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .movie-page-container .info-container .section-container .items .item {
@@ -198,6 +197,12 @@
     margin-bottom: .5rem;
 }
 
+.movie-page-container .info-container .section-container .items .img-movie {
+    margin-right: 1rem;
+    margin-bottom: .5rem;
+    border-radius: .2rem;
+}
+
 .movie-page-container .info-container .section-container .items .item .name {
     font-weight: bold;
     font-size: .9rem;
@@ -209,6 +214,12 @@
     color: #000;
     font-size: .8rem;
     padding: 0 10px 8px 10px;
+}
+
+.movie-page-container .info-container .section-container .items .recommendation-movie-title {
+    color: #000;
+    font-size: .9rem;
+    padding-right: 1rem;
 }
 
 .movie-page-container .info-container .section-container .full-crew {

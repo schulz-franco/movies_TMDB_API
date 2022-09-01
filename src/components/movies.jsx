@@ -3,6 +3,7 @@ import { get_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { Link } from "react-router-dom"
 import Loader from "../assets/loading.gif"
+import No_img from "../assets/no_image.jpg"
 
 export default function Movies() {
 
@@ -24,7 +25,6 @@ export default function Movies() {
         if (page > 1) {
             set_page(1)
         }
-        set_loading(true)
     }
 
     function control_page(ev, option) {
@@ -81,66 +81,37 @@ export default function Movies() {
         }
     }, [page, category])
 
-    if (loading) {
-        return(
-            <div className="movies-main-container">
-                <span className="movies-title">Online movies</span>
-                <div className="category-container">
-                    <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                    <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
+    return(
+        <div className="movies-main-container">
+            <span className="movies-title">Online movies</span>
+            <div className="category-container">
+                <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
+                <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
+            </div>
+            <div className="movies-list-container">
+                {movies.map(movie => {
+                    return(
+                        <Link to={"/movie/" + movie.id} className="movie-container">
+                            {movie.poster_path ? <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} /> : <img src={No_img} alt={movie.title} />}
+                            <span className="movie-title">{movie.title}</span>
+                        </Link>
+                    )
+                })}
+            </div>
+            <div className="pagination-container">
+                <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
+                <div className="pages">
+                    <span className="page">{page}</span>
+                    <span>of</span>
+                    <span className="total">{see_pages()}</span>
                 </div>
-                <div className="movies-list-container">
-                    {movies.map(movie => {
-                        return(
-                            <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                                <span className="movie-title">{movie.title}</span>
-                            </Link>
-                        )
-                    })}
-                </div>
-                <div className="pagination-container">
-                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                    <div className="pages">
-                        <span className="page">{page}</span>
-                        <span>of</span>
-                        <span className="total">{see_pages()}</span>
-                    </div>
-                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                </div>
+                <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
+            </div>
+            {loading &&
                 <div className="loading">
                     <img src={Loader} alt="Loading..." />
                 </div>
-            </div>
-        )
-    } else {
-        return(
-            <div className="movies-main-container">
-                <span className="movies-title">Online movies</span>
-                <div className="category-container">
-                    <span onClick={(ev)=> change_category(ev, "latest")} className="category category-current">Latest</span>
-                    <span onClick={(ev)=> change_category(ev, "ranking")} className="category">Popular</span>
-                </div>
-                <div className="movies-list-container">
-                    {movies.map(movie => {
-                        return(
-                            <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                                <span className="movie-title">{movie.title}</span>
-                            </Link>
-                        )
-                    })}
-                </div>
-                <div className="pagination-container">
-                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                    <div className="pages">
-                        <span className="page">{page}</span>
-                        <span>of</span>
-                        <span className="total">{see_pages()}</span>
-                    </div>
-                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                </div>
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }

@@ -3,6 +3,7 @@ import { search_movies } from "../tmdb-api/api_methods"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { useParams, Link } from 'react-router-dom';
 import Loader from "../assets/loading.gif"
+import No_img from "../assets/no_image.jpg"
 
 export default function Genres() {
     
@@ -69,35 +70,7 @@ export default function Genres() {
         window.scrollTo(0, 0)
     }, [search])
 
-    if (loading) {
-        return(
-            <div style={{marginTop: "6rem"}} className="movies-main-container">
-                <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">Searching: {search}</span>
-                <div className="movies-list-container">
-                    {movies.map(movie => {
-                        return(
-                            <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
-                                <span className="movie-title">{movie.title}</span>
-                            </Link>
-                        )
-                    })}
-                </div>
-                <div className="pagination-container">
-                    <BiLeftArrowAlt onClick={(ev) => control_page(ev, "prev")} className="arrow arrow1" />
-                    <div className="pages">
-                        <span className="page">{page}</span>
-                        <span>of</span>
-                        <span className="total">{see_pages()}</span>
-                    </div>
-                    <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
-                </div>
-                <div className="loading">
-                    <img src={Loader} alt="Loading..." />
-                </div>
-            </div>
-        )
-    } else if (results && !loading) {
+    if (results) {
         return(
             <div style={{marginTop: "6.5rem"}} className="movies-main-container">
                 <span style={{marginBottom: "1rem", fontSize: "1.5rem"}} className="movies-title">Searching: {search}</span>
@@ -105,7 +78,7 @@ export default function Genres() {
                     {movies.map(movie => {
                         return(
                             <Link to={"/movie/" + movie.id} className="movie-container">
-                                <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
+                                {movie.poster_path ? <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} /> : <img src={No_img} alt={movie.title} />}
                                 <span className="movie-title">{movie.title}</span>
                             </Link>
                         )
@@ -122,12 +95,22 @@ export default function Genres() {
                         <BiRightArrowAlt onClick={(ev) => control_page(ev, "next")} className="arrow arrow2" />
                     </div>
                 }
+                {loading &&
+                    <div className="loading">
+                        <img src={Loader} alt="Loading..." />
+                    </div>
+                }
             </div>
         )
     } else {
         return(
             <div style={{marginTop: "6rem"}} className="movies-main-container">
                 <span style={{marginBottom: ".2rem", fontSize: "1.5rem"}} className="movies-title">No results</span>
+                {loading &&
+                    <div className="loading">
+                        <img src={Loader} alt="Loading..." />
+                    </div>
+                }
             </div>
         )
     }

@@ -11,7 +11,13 @@ export default function Movie() {
     const [movie, set_movie] = useState(null)
     const [credits, set_credits] = useState(null)
     const [images, set_images] = useState(null)
+    const [recommendations, set_recommendations] = useState(null)
     const [loading, set_loading] = useState(true)
+
+    function enter_recommendation() {
+        set_loading(true)
+        window.scrollTo(0, 0)
+    }
 
     useEffect(()=> {
         get_movie(id, "").then(res=> {
@@ -23,6 +29,10 @@ export default function Movie() {
         })
         get_movie(id, "/images?include_image_language=en").then(res=> {
             set_images(res)
+            console.log(res)
+        })
+        get_movie(id, "/recommendations").then(res=> {
+            set_recommendations(res)
             console.log(res)
         })
         if (loading) {
@@ -41,7 +51,7 @@ export default function Movie() {
             }
             {movie && 
                 <>
-                <div style={(movie.backdrop_path != "") && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")"}} className="header-container">
+                <div style={movie.backdrop_path && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")"}} className="header-container">
                     <img className="poster" src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} alt={movie.title} />
                     <div className="title-container">
                         <span className="title">{movie.title}</span>
@@ -87,7 +97,7 @@ export default function Movie() {
                     {(credits && credits.cast.length != 0) && 
                         <div className="section-container">
                             <span className="title">Top Billed Cast</span>
-                            <div className="items">
+                            <div style={{borderBottom: "1px solid rgb(221, 221, 221)"}} className="items">
                                 {credits.cast.map((person, index) => {
                                     if (index < 9) {
                                         return(
@@ -118,6 +128,21 @@ export default function Movie() {
                                             <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/original" + image.file_path} alt={movie.title}/>
                                         )
                                     }
+                                })}
+                            </div>
+                        </div>
+                    }
+                    {(recommendations && recommendations.results.length != 0) && 
+                        <div className="section-container">
+                            <span className="title">Recommendations</span>
+                            <div style={{borderBottom: "1px solid rgb(221, 221, 221)"}} className="items">
+                                {recommendations.results.map(recommendation => {
+                                    return(
+                                        <Link style={{marginBottom: ".5rem"}} onClick={enter_recommendation} to={"/movie/" + recommendation.id}>
+                                            {(recommendation.poster_path) ? <img width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/original" + recommendation.poster_path} alt={movie.title}/> : <img width={150} height={200} className="img-movie" src={No_img} alt={movie.title}/>}
+                                            <span className="recommendation-movie-title">{recommendation.title}</span>
+                                        </Link>
+                                    )
                                 })}
                             </div>
                         </div>
