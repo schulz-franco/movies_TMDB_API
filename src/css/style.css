@@ -318,6 +318,9 @@ body::-webkit-scrollbar-thumb {
   margin-top: 2rem;
   padding: 0 1.8rem; }
 
+.movies-main-container-search {
+  margin-top: 6.5rem; }
+
 .movies-main-container .movies-title {
   font-size: 2.05rem;
   margin-bottom: 0;
@@ -325,6 +328,14 @@ body::-webkit-scrollbar-thumb {
   color: #fff;
   letter-spacing: -1px;
   font-weight: 700; }
+
+.movies-main-container .movies-genres-title {
+  font-size: 1.6rem;
+  margin-bottom: .8rem; }
+
+.movies-main-container .movies-search-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem; }
 
 .movies-main-container .category-container {
   display: grid;
@@ -642,7 +653,10 @@ body::-webkit-scrollbar-thumb {
   font-weight: 700; }
 
 .movie-page-container .info-container .more-info .valor {
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  margin-top: .2rem;
+  padding-right: 4rem; }
 
 .error-container {
   position: fixed;

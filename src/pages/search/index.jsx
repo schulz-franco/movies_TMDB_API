@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react"
 import Loading from "../../components/loading"
 
-const FilterSearch = lazy(()=> import("../../components/filterSearch"))
+const MovieListReusable = lazy(()=> import("../../components/movieListReusable"))
 
 const Search = ()=> {
     return(
         <Suspense fallback={<Loading />}>
-            <FilterSearch />
+            <MovieListReusable section="search" />
         </Suspense>
     )
 }

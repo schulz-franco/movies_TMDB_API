@@ -2,13 +2,13 @@ import { lazy, Suspense } from "react"
 import Loading from "../../components/loading"
 
 const Carousel = lazy(()=> import("../../components/carousel"))
-const Movies = lazy(()=> import("../../components/movies"))
+const MovieListReusable = lazy(()=> import("../../components/movieListReusable"))
 
 const Home = ()=> {
     return(
         <Suspense fallback={<Loading />}>
             <Carousel />
-            <Movies />
+            <MovieListReusable section="home" />
         </Suspense>
     )
 }

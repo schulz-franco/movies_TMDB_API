@@ -2,13 +2,13 @@ import { lazy, Suspense } from "react"
 import Loading from "../../components/loading"
 
 const Carousel = lazy(()=> import("../../components/carousel"))
-const FilterGenre = lazy(()=> import("../../components/filterGenre"))
+const MovieListReusable = lazy(()=> import("../../components/movieListReusable"))
 
 const Genre = ()=> {
     return(
         <Suspense fallback={<Loading />}>
             <Carousel />
-            <FilterGenre />
+            <MovieListReusable section="genres" />
         </Suspense>
     )
 }
