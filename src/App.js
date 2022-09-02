@@ -9,7 +9,7 @@ const Genre = lazy(()=> import("./pages/genre/index"))
 const Search = lazy(()=> import("./pages/search/index"))
 const MovieInfo = lazy(()=> import("./pages/movie/index"))
 
-const Res_error = lazy(()=> import("./components/res_error"))
+const ResError = lazy(()=> import("./components/resError"))
 
 export default function App() {
   if (window.innerWidth <= 425) {
@@ -27,7 +27,7 @@ export default function App() {
   } else {
     return(
     <Suspense fallback={<Loading />}>
-      <Res_error />
+      <ResError />
     </Suspense>)
   }
 }

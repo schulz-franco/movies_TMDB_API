@@ -1,6 +1,6 @@
 import { CSSTransition } from "react-transition-group"
-import MovieCarousel from "./movieCarousel"
 import useCarousel from "../hooks/useCarousel"
+import MovieCarousel from "./movieCarousel"
 
 export default function Carousel() {
 

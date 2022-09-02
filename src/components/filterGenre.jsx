@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { controlPage, seePages } from "./functions";
 import useGenres from '../hooks/useGenres';
+import controlPage from "../utilities/controlPage"
+import seePages from "../utilities/seePages"
 import No_img from "../assets/no_image.jpg"
 
 export default function Genres() {
@@ -16,7 +17,7 @@ export default function Genres() {
                     {movies.map(movie => {
                         return(
                             <Link to={"/movie/" + movie.id} className="movie-container">
-                                {movie.poster_path ? <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} /> : <img src={No_img} alt={movie.title} />}
+                                {movie.poster_path ? <img width={"100%"} height={240} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} /> : <img width={"100%"} height={240} src={No_img} alt={movie.title} />}
                                 <span className="movie-title">{movie.title}</span>
                             </Link>
                         )

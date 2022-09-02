@@ -149,7 +149,7 @@ body::-webkit-scrollbar-thumb {
   grid-column: 1/2;
   grid-row: 1;
   background: none;
-  padding: 16px;
+  padding: 18px 16px 16px 16px;
   border: 1px solid rgba(61, 79, 145, 0.5);
   border-radius: 30px;
   outline: none;
@@ -361,8 +361,6 @@ body::-webkit-scrollbar-thumb {
   position: relative; }
 
 .movies-list-container .movie-container img {
-  width: 100%;
-  height: 240px;
   border-radius: .200rem; }
 
 .movies-list-container .movie-container .movie-title {
@@ -454,8 +452,6 @@ body::-webkit-scrollbar-thumb {
   background-position: 60%; }
 
 .movie-page-container .header-container .poster {
-  width: 120px;
-  height: auto;
   border-radius: .2rem;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.178); }
 
@@ -600,8 +596,6 @@ body::-webkit-scrollbar-thumb {
   margin-right: 1rem; }
 
 .movie-page-container .info-container .section-container .items .item .img-person {
-  width: 100px;
-  height: 140px;
   border-top-left-radius: .4rem;
   border-top-right-radius: .4rem; }
 
@@ -636,6 +630,19 @@ body::-webkit-scrollbar-thumb {
   margin-top: 1rem;
   margin-left: 1rem;
   font-size: 1.1rem; }
+
+.movie-page-container .info-container .more-info {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: min-content;
+  background-color: #fff;
+  padding: 0 1rem 0 1rem; }
+
+.movie-page-container .info-container .more-info .data {
+  font-weight: 700; }
+
+.movie-page-container .info-container .more-info .valor {
+  margin-bottom: 1rem; }
 
 .error-container {
   position: fixed;

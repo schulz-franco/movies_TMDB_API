@@ -16,8 +16,6 @@
 }
 
 .movie-page-container .header-container .poster {
-    width: 120px;
-    height: auto;
     border-radius: .2rem;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.178);
 }
@@ -186,8 +184,6 @@
 }
 
 .movie-page-container .info-container .section-container .items .item .img-person {
-    width: 100px;
-    height: 140px;
     border-top-left-radius: .4rem;
     border-top-right-radius: .4rem;
 }
@@ -228,4 +224,20 @@
     margin-top: 1rem;
     margin-left: 1rem;
     font-size: 1.1rem;
+}
+
+.movie-page-container .info-container .more-info {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    background-color: #fff;
+    padding: 0 1rem 0 1rem;
+}
+
+.movie-page-container .info-container .more-info .data {
+    font-weight: 700;
+}
+
+.movie-page-container .info-container .more-info .valor {
+    margin-bottom: 1rem;
 }

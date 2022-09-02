@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import getMovie from "../services/getMovie"
 
 const useMovie = ()=> {
+    
     const {id} = useParams()
     const [movie, setMovie] = useState(null)
     const [credits, setCredits] = useState(null)

@@ -5,11 +5,13 @@ Go to src/services/options.js and paste your token into the variable called "api
 
 # Pendings list
 
-- Finish the information section of each movie
-- Make the staff section
-- Reform all code
+- Make the full staff section
+- Reform hooks
 - Responsive design
-- Clean architecture
+- Finish clean architecture
+- Make components reusable
+- Make the actors section
+- Implement context
 
 # Getting Started with Create React App
 

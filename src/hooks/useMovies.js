@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import getMovies from "../services/getMovies"
-import { controlArrows } from "../components/functions";
+import controlArrows from "../utilities/controlArrows"
 
 const useMovies = ()=> {
     

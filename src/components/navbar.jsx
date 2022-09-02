@@ -1,24 +1,10 @@
 import { Link } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
-import logo from "../assets/logo.png"
 import useNavbar from "../hooks/useNavbar"
-
-const open_button = (open, setOpen, controlNavbar)=> {
-    if (open) {
-        return <IoMdClose onClick={()=> controlNavbar(open, setOpen)} className="menu-icon"/>
-    } else {
-        return <IoMdMenu onClick={()=> controlNavbar(open, setOpen)} className="menu-icon"/>
-    }
-}
-
-const controlNavbar = (open, setOpen)=> {
-    if (open) {
-        setOpen(false)
-    } else {
-        setOpen(true)
-    }
-}
+import navbarOpenButton from "../utilities/navbarOpenButton"
+import controlNavbar from "../utilities/controlNavbar"
+import logo from "../assets/logo.png"
 
 const search = ()=> {
     window.location.href = "/movies/search/" + document.querySelector(".navbar-menu-container .search-bar .search-input").value
@@ -33,7 +19,7 @@ export default function Navbar() {
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">MDB</span>
             <span/>
-            {open_button(open, setOpen, controlNavbar)}
+            {navbarOpenButton(open, setOpen, controlNavbar, IoMdClose, IoMdMenu)}
             <div className="circle"/>
             <CSSTransition in={open} timeout={200} classNames={'black-background-anim'} unmountOnExit>
                 <div onClick={()=> controlNavbar(open, setOpen)} className="black-background"></div>

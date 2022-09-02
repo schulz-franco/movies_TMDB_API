@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom';
 import getMovies from "../services/getMovies"
-import { controlArrows } from "../components/functions";
+import controlArrows from "../utilities/controlArrows"
 
 const useGenres = ()=> {
     const {id, genreName} = useParams();

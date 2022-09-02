@@ -1,11 +1,8 @@
-import useMovie from "../hooks/useMovie"
 import { Link } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
+import useMovie from "../hooks/useMovie"
+import scrollTop from "../utilities/scrollTop"
 import No_img from "../assets/no_image.jpg"
-
-const enter_recommendation = ()=> {
-    window.scrollTo(0, 0)
-}
 
 export default function Movie() {
 
@@ -16,7 +13,7 @@ export default function Movie() {
             {movie && 
                 <>
                 <div style={movie.backdrop_path && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500" + movie.backdrop_path + ")"}} className="header-container">
-                    <img className="poster" src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} alt={movie.title} />
+                    <img width={120} height={180} className="poster" src={"https://image.tmdb.org/t/p/w200" + movie.poster_path} alt={movie.title} />
                     <div className="title-container">
                         <span className="title">{movie.title}</span>
                         <div className="vote-container">
@@ -66,7 +63,7 @@ export default function Movie() {
                                     if (index < 9) {
                                         return(
                                             <div className="item">
-                                                {(person.profile_path) ? <img className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} /> : <img className="img-person" src={No_img} alt="Without image" />}
+                                                {(person.profile_path) ? <img width={100} height={140} className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} /> : <img width={100} height={140} className="img-person" src={No_img} alt="Without image" />}
                                                 <Link className="name" to={"/person/" + person.id}>{person.original_name}</Link>
                                                 <span className="job">{person.character}</span>
                                             </div>
@@ -97,18 +94,28 @@ export default function Movie() {
                         </div>
                     }
                     {(recommendations && recommendations.results.length != 0) && 
-                        <div className="section-container">
+                        <div style={{border: "none"}} className="section-container">
                             <span className="title">Recommendations</span>
                             <div style={{borderBottom: "1px solid rgb(221, 221, 221)"}} className="items">
                                 {recommendations.results.map(recommendation => {
                                     return(
-                                        <Link style={{marginBottom: ".5rem"}} onClick={enter_recommendation} to={"/movie/" + recommendation.id}>
+                                        <Link style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + recommendation.id}>
                                             {(recommendation.poster_path) ? <img width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={movie.title}/> : <img width={150} height={200} className="img-movie" src={No_img} alt={movie.title}/>}
                                             <span className="recommendation-movie-title">{recommendation.title}</span>
                                         </Link>
                                     )
                                 })}
                             </div>
+                        </div>
+                    }
+                    {movie && 
+                        <div className="more-info">
+                            <span className="data">Original title</span>
+                            <span className="valor">{movie.original_title}</span>
+                            <span className="data">Budget</span>
+                            <span className="valor">{(movie.budget != 0) ? ("$" + movie.budget) : "Without budget"}</span>
+                            <span className="data">Revenue</span>
+                            <span className="valor">{(movie.revenue != 0) ? ("$" + movie.revenue) : "Without revenue"}</span>
                         </div>
                     }
                 </div>
