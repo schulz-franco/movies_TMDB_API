@@ -34,7 +34,7 @@
     grid-template-columns: min-content min-content;
     grid-template-rows: min-content;
     margin-top: 0.4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     align-items: start;
 }
 
@@ -68,9 +68,12 @@
     position: relative;
 }
 
-
 .movies-list-container .movie-container img {
     border-radius: .200rem;
+}
+
+.movies-list-container .movie-container .lazy-load-image-movie {
+    border-radius: .250rem;
 }
 
 .movies-list-container .movie-container .movie-title {

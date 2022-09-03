@@ -342,7 +342,7 @@ body::-webkit-scrollbar-thumb {
   grid-template-columns: min-content min-content;
   grid-template-rows: min-content;
   margin-top: 0.4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   align-items: start; }
 
 .movies-main-container .category-container .category {
@@ -373,6 +373,9 @@ body::-webkit-scrollbar-thumb {
 
 .movies-list-container .movie-container img {
   border-radius: .200rem; }
+
+.movies-list-container .movie-container .lazy-load-image-movie {
+  border-radius: .250rem; }
 
 .movies-list-container .movie-container .movie-title {
   font-size: .875rem;
@@ -610,9 +613,12 @@ body::-webkit-scrollbar-thumb {
   border-top-left-radius: .4rem;
   border-top-right-radius: .4rem; }
 
-.movie-page-container .info-container .section-container .items .img-backdrop {
+.movie-page-container .info-container .section-container .items .lazy-load-img-backdrop {
   margin-right: 1rem;
   margin-bottom: .5rem; }
+
+.movie-page-container .info-container .section-container .items .img-backdrop {
+  min-width: 150px; }
 
 .movie-page-container .info-container .section-container .items .img-movie {
   margin-right: 1rem;

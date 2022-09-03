@@ -188,10 +188,15 @@
     border-top-right-radius: .4rem;
 }
 
-.movie-page-container .info-container .section-container .items .img-backdrop {
+.movie-page-container .info-container .section-container .items .lazy-load-img-backdrop {
     margin-right: 1rem;
     margin-bottom: .5rem;
 }
+
+.movie-page-container .info-container .section-container .items .img-backdrop {
+    min-width: 150px;
+}
+
 
 .movie-page-container .info-container .section-container .items .img-movie {
     margin-right: 1rem;

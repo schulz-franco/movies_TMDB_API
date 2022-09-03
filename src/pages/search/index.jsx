@@ -1,13 +1,8 @@
-import { lazy, Suspense } from "react"
-import Loading from "../../components/loading"
-
-const MovieListReusable = lazy(()=> import("../../components/movieListReusable"))
+import MovieListReusable from "../../components/movieListReusable"
 
 const Search = ()=> {
     return(
-        <Suspense fallback={<Loading />}>
-            <MovieListReusable section="search" />
-        </Suspense>
+        <MovieListReusable section="search" />
     )
 }
 

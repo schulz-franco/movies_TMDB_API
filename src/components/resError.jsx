@@ -1,4 +1,4 @@
-import webErrorImg from "../assets/web-error.png"
+import webErrorImg from "../assets/webError.png"
 
 export default function Res_error() {
     return(

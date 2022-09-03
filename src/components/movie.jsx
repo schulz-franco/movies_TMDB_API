@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { AiFillStar } from "react-icons/ai"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 import useMovie from "../hooks/useMovie"
 import scrollTop from "../utilities/scrollTop"
-import No_img from "../assets/no_image.jpg"
+import placeholderImage from "../assets/placeholderImage.jpg"
+import noImage from "../assets/noImage.jpg"
 
 export default function Movie() {
 
@@ -63,7 +65,7 @@ export default function Movie() {
                                     if (index < 9) {
                                         return(
                                             <div className="item">
-                                                {(person.profile_path) ? <img width={100} height={140} className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} /> : <img width={100} height={140} className="img-person" src={No_img} alt="Without image" />}
+                                                {(person.profile_path) ? <LazyLoadImage wrapperClassName="img-person" width={100} height={140} className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} placeholderSrc={placeholderImage} /> : <img width={100} height={140} className="img-person" src={noImage} alt="Without image" />}
                                                 <Link className="name" to={"/person/" + person.id}>{person.original_name}</Link>
                                                 <span className="job">{person.character}</span>
                                             </div>
@@ -80,13 +82,13 @@ export default function Movie() {
                             <div className="items">
                                 {(images.backdrops.length != 0) && images.backdrops.map(image => {
                                     return(
-                                        <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title}/>
+                                        <LazyLoadImage wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title} placeholderSrc={placeholderImage} />
                                     )
                                 })}
                                 {(images.posters.length != 0) && images.posters.map((image, index) => {
                                     if (index < 10) {
                                         return(
-                                            <img width={300} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title}/>
+                                            <LazyLoadImage wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={movie.title} placeholderSrc={placeholderImage} />
                                         )
                                     }
                                 })}
@@ -100,7 +102,7 @@ export default function Movie() {
                                 {recommendations.results.map(recommendation => {
                                     return(
                                         <Link style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + recommendation.id}>
-                                            {(recommendation.poster_path) ? <img width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={movie.title}/> : <img width={150} height={200} className="img-movie" src={No_img} alt={movie.title}/>}
+                                            {(recommendation.poster_path) ? <LazyLoadImage wrapperClassName="img-movie" width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={movie.title} placeholderSrc={placeholderImage} /> : <img width={150} height={200} className="img-movie" src={noImage} alt={movie.title}/>}
                                             <span className="recommendation-movie-title">{recommendation.title}</span>
                                         </Link>
                                     )
