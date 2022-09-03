@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa"
 
 const imagesUrl = "https://image.tmdb.org/t/p/w500"
 
-export default function MovieCarousel(props) {
+const CarouselContent = (props)=> {
 
     let background_style = {
         backgroundImage: "url(" + imagesUrl + props.backdrop_url + ")"
@@ -24,3 +24,5 @@ export default function MovieCarousel(props) {
         </div>
     )
 }
+
+export default CarouselContent

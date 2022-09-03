@@ -1,8 +1,8 @@
 import { CSSTransition } from "react-transition-group"
 import useCarousel from "../hooks/useCarousel"
-import MovieCarousel from "./movieCarousel"
+import CarouselContent from "./carouselContent"
 
-export default function Carousel() {
+const Carousel = ()=> {
 
     const { moviesNews, currentItem, carouselIndicators } = useCarousel()
 
@@ -13,7 +13,7 @@ export default function Carousel() {
                     {moviesNews.map((movie, index) => {
                         return(
                             <CSSTransition in={(currentItem == index)} timeout={300} classNames={'carousel-anim'} unmountOnExit>
-                                <MovieCarousel
+                                <CarouselContent
                                     id={movie.id}
                                     backdrop_url={movie.poster_path}
                                     title={movie.title}
@@ -36,3 +36,5 @@ export default function Carousel() {
         )
     }
 }
+
+export default Carousel
