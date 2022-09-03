@@ -1,4 +1,4 @@
-import Movie from "../../components/movie"
+import Movie from "../../components/movie/movie"
 
 const MovieInfo = ()=> {
     return(
