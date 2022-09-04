@@ -9,6 +9,7 @@ const Genre = lazy(()=> import("./pages/genre/index"))
 const Search = lazy(()=> import("./pages/search/index"))
 const MovieInfo = lazy(()=> import("./pages/movie/index"))
 const Crew = lazy(()=> import("./pages/crew/index"))
+const Person = lazy(()=> import("./pages/person/index"))
 
 const ResError = lazy(()=> import("./components/resError"))
 
@@ -18,11 +19,36 @@ export default function App() {
       <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Suspense fallback={<Loading />}><Home /></Suspense>} />
-            <Route path="/movies/genres/:id/:genreName" element={<Suspense fallback={<Loading />}><Genre /></Suspense>} />
-            <Route path="/movies/search/:search" element={<Suspense fallback={<Loading />}><Search /></Suspense>} />
-            <Route path="/movie/:id" element={<Suspense fallback={<Loading />}><MovieInfo /></Suspense>} />
-            <Route path="/crew/:id" element={<Suspense fallback={<Loading />}><Crew /></Suspense>} />
+            <Route path='/' element={
+              <Suspense fallback={<Loading />}>
+                <Home />
+              </Suspense>
+            } />
+            <Route path="/movies/genres/:id/:genreName" element={
+              <Suspense fallback={<Loading />}>
+                <Genre />
+              </Suspense>
+            } />
+            <Route path="/movies/search/:search" element={
+              <Suspense fallback={<Loading />}>
+                <Search />
+              </Suspense>
+            } />
+            <Route path="/movie/:id" element={
+              <Suspense fallback={<Loading />}>
+                <MovieInfo />
+              </Suspense>
+            } />
+            <Route path="/crew/:id" element={
+              <Suspense fallback={<Loading />}>
+                <Crew />
+              </Suspense>
+            } />
+            <Route path='/person/:id' element={
+              <Suspense fallback={<Loading />}>
+                <Person />
+              </Suspense>
+            } />
           </Routes>
       </BrowserRouter>
     );
@@ -30,6 +56,7 @@ export default function App() {
     return(
     <Suspense fallback={<Loading />}>
       <ResError />
-    </Suspense>)
+    </Suspense>
+    )
   }
 }

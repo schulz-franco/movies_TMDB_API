@@ -1,0 +1,84 @@
+.person-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    padding: 7.5rem 2rem 1rem 2rem;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40%;
+}
+
+.person-container img {
+    border-radius: .5rem;
+}
+
+.person-container .lazy-load-img {
+    border-radius: .5rem;
+}
+
+.person-container .name {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.bio-container {
+    background-color: #fff;
+    padding: 1rem 2rem 1rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.bio-container .bio-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-top: 1.5rem;
+}
+
+.bio-container .biography {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    line-height: 1.3rem;
+}
+
+.personal-info {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    background-color: #fff;
+    padding: 0 2rem 1rem 2rem;
+}
+
+.personal-info .title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    opacity: 0.9;
+    margin-top: 1rem;
+}
+
+.personal-info .known-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: min-content;
+}
+
+.personal-info .person-date-valor {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    margin-top: 1rem;
+}
+
+.personal-info .person-date-valor .date {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.personal-info .person-date-valor .valor {
+    margin-top: .2rem;
+    font-size: .9rem;
+    opacity: 0.9;
+}

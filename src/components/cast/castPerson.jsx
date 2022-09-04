@@ -6,7 +6,7 @@ import noImage from "../../assets/noImage.jpg"
 const CastPerson = (props)=> {
     return(
         <div className="personItem">
-            {props.image ? <LazyLoadImage src={"https://image.tmdb.org/t/p/w300" + props.image} placeholderSrc={placeholderImage} width={70} height={70} wrapperClassName="lazy-load-img" /> : <img src={noImage} width={70} height={70} />}
+            {props.image ? <LazyLoadImage  src={"https://image.tmdb.org/t/p/w300" + props.image} placeholderSrc={placeholderImage} width={70} height={80} wrapperClassName="lazy-load-img" /> : <img src={noImage} width={70} height={80} />}
             <div className="info">
                 <Link to={"/person/" + props.id}>{props.name}</Link>
                 {props.character && <span>{props.character}</span>}

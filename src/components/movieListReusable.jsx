@@ -34,7 +34,7 @@ const MovieListReusable = (props)=> {
                     {movies && movies.map(movie => {
                         return(
                             <Link to={"/movie/" + movie.id} className="movie-container">
-                                {movie.poster_path ? <LazyLoadImage wrapperClassName="lazy-load-image-movie" width={"100%"} height={240} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} placeholderSrc={placeholderImage} /> : <img className="lazy-load-image-movie" width={150} height={240} src={noImage} alt={movie.title} />}
+                                {movie.poster_path ? <LazyLoadImage  wrapperClassName="lazy-load-image-movie" width={"100%"} height={240} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} placeholderSrc={placeholderImage} /> : <img className="lazy-load-image-movie" width={150} height={240} src={noImage} alt={movie.title} />}
                                 <span className="movie-title">{movie.title}</span>
                             </Link>
                         )

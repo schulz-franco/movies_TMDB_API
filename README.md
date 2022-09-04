@@ -3,14 +3,11 @@
 If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
 Go to src/services/options.js and paste your token into the variable called "api_key"
 
-# Pendings list
+# Current pendings list
 
-- Make the full staff section
-- Reform hooks
 - Responsive design
 - Finish clean architecture
-- Make components reusable
-- Make the actors section
+- Make reusable components
 - Implement context
 
 # Getting Started with Create React App

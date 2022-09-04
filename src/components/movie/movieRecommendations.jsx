@@ -12,7 +12,7 @@ const MovieRecommendations = (props)=> {
                 {props.recommendations.results.map(recommendation => {
                     return(
                         <Link style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + recommendation.id}>
-                            {(recommendation.poster_path) ? <LazyLoadImage wrapperClassName="img-movie" width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={props.title.title} placeholderSrc={placeholderImage} /> : <img width={150} height={200} className="img-movie" src={noImage} alt={props.title.title}/>}
+                            {(recommendation.poster_path) ? <LazyLoadImage  wrapperClassName="img-movie" width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + recommendation.poster_path} alt={props.title.title} placeholderSrc={placeholderImage} /> : <img width={150} height={200} className="img-movie" src={noImage} alt={props.title.title}/>}
                             <span className="recommendation-movie-title">{recommendation.title}</span>
                         </Link>
                     )
