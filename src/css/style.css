@@ -161,14 +161,16 @@ body::-webkit-scrollbar-thumb {
   font-size: 16px;
   color: #8da0bc; }
 
-.navbar-menu-container .search-bar .search-icon {
+.navbar-menu-container .search-bar .search-link {
   grid-column: 1/2;
   grid-row: 1;
-  color: #178FFF;
-  font-size: 30px;
   margin-left: 78%;
   display: grid;
   align-items: center; }
+
+.navbar-menu-container .search-bar .search-icon {
+  color: #178FFF;
+  font-size: 30px; }
 
 .navbar-menu-container .navbar-link {
   text-decoration: none;
@@ -694,6 +696,58 @@ body::-webkit-scrollbar-thumb {
   padding: 6px 30px 0 30px;
   font-family: 'Raleway', sans-serif;
   margin-top: 10px; }
+
+.error-background {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  align-items: end;
+  justify-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2; }
+
+.error-background .error-modal {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: min-content min-content;
+  width: 80%;
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: .4rem;
+  transition: 200ms;
+  align-items: center; }
+
+.error-background .error-modal .code {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: red;
+  grid-column: 1/2;
+  grid-row: 1/2; }
+
+.error-background .error-modal .message {
+  margin-top: .2rem;
+  opacity: 0.8;
+  font-size: .9rem;
+  grid-column: 1/2;
+  grid-row: 2/3; }
+
+.error-background .error-modal .reload {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  font-size: 2.2rem;
+  opacity: 0.7;
+  margin-right: .5rem; }
+
+.error-anim-appear {
+  transform: translateX(150%); }
+
+.error-anim-appear-done {
+  transform: translateX(0); }
 
 .cast-movie-container {
   display: grid;

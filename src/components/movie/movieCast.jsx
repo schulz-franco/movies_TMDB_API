@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
 
 const MovieCast = (props)=> {
-    if (props.credits && props.credits.cast.length != 0) return(
+    if (props.credits && props.credits.cast.length!== 0) return(
         <div className="section-container">
             <span className="title">Top Billed Cast</span>
             <div style={{borderBottom: "1px solid rgb(221, 221, 221)"}} className="items">

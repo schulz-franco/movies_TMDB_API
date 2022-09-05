@@ -1,5 +1,5 @@
 const changeCategory = (ev, button, setCategory, page, setPage)=> {
-    if (button == "ranking") {
+    if (button === "ranking") {
         setCategory("ranking")
         ev.target.previousSibling.classList.remove("category-current")
     } else {

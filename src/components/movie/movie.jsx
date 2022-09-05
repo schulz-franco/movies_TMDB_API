@@ -1,4 +1,5 @@
 import useMovie from "../../hooks/useMovie"
+
 import MovieHeader from "./movieHeader"
 import MovieBasicInfo from "./movieBasicInfo"
 import MovieTextContainer from "./movieTextContainer"
@@ -7,9 +8,13 @@ import MovieMedia from "./movieMedia"
 import MovieRecommendations from "./movieRecommendations"
 import MovieMoreInfo from "./movieMoreInfo"
 
+import ErrorMessage from "../errorMessage"
+
 const Movie = ()=> {
 
-    const { movie, credits, images, recommendations } = useMovie()
+    const { movie, credits, images, recommendations, error } = useMovie()
+
+    if (error) return <ErrorMessage code={error["code"]} message={error["message"]} />
 
     if (movie) return(
         <div className="movie-page-container">

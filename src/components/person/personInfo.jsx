@@ -1,6 +1,8 @@
+import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import PersonDate from "./personDate"
 import PersonMovies from "./personMovies"
-import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
 
@@ -23,7 +25,7 @@ const PersonInfo = (props)=> {
         </div>
         <div className="bio-container">
             <span className="bio-title">Biography</span>
-            <p className="biography">{props.bio}</p>
+            <p className="biography">{props.bio ? props.bio : "We don't have biography for this person."}</p>
         </div>
         <PersonMovies cast={props.cast} />
         </>

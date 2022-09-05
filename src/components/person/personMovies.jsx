@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import scrollTop from "../../utilities/scrollTop"
+
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
 
 const PersonMovies = (props)=> {
-    if (props.cast && props.cast.length != 0) return( 
+    if (props.cast && props.cast.length > 2) return( 
         <div style={{border: "none"}} className="section-container">
             <span style={{paddingLeft: "2rem", fontSize: "1.3rem"}} className="title">Know For</span>
             <div style={{borderBottom: "1px solid rgb(221, 221, 221)", paddingLeft: "2rem"}} className="items">

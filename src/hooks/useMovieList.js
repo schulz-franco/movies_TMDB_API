@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+
 import getMovies from "../services/getMovies"
 import searchMovies from "../services/searchMovies"
+
 import controlArrows from "../utilities/controlArrows"
 
 const useMovieList = (section)=> {
@@ -12,36 +14,46 @@ const useMovieList = (section)=> {
     const [totalPages, setTotalPages] = useState(null)
     const [category, setCategory] = useState("latest")
     const [waiting, setWaiting] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(()=> {
         let arrow1 = document.querySelector(".pagination-container .arrow1")
         let arrow2 = document.querySelector(".pagination-container .arrow2")
-        if (section == "home") {
-            if (category == "latest") {
+        if (section === "home") {
+            if (category === "latest") {
                 getMovies(page, "&primary_release_date.gte=2022-08-01&primary_release_date.lte=2022-08-28").then(res => {
                     setTotalPages(res.total_pages)
                     setMovies(res.results)
+                }).catch(err=> {
+                    setError(err)
                 })
             } else {
                 getMovies(page, "&sort_by=popularity.desc").then(res => {
                     setTotalPages(res.total_pages)
                     setMovies(res.results)
+                }).catch(err=> {
+                    setError(err)
                 })
             }
-        } else if (section == "genres") {
+        } else if (section === "genres") {
             getMovies(page, "&with_genres=" + id).then(res => {
                 setTotalPages(res.total_pages)
                 setMovies(res.results)
+            }).catch(err=> {
+                setError(err)
             })
-        } else if (section == "search") {
+        } else if (section === "search") {
             searchMovies(page, search).then(res => {
                 if (res.total_pages) {
                     setTotalPages(res.total_pages)
                     setMovies(res.results)
                     setWaiting(false)
                 } else {
+                    setMovies(null)
                     setWaiting(false)
                 }
+            }).catch(err=> {
+                setError(err)
             })
         }
         controlArrows(arrow1, arrow2, page, setPage, totalPages)
@@ -62,7 +74,8 @@ const useMovieList = (section)=> {
         setCategory,
         genreName,
         search,
-        waiting
+        waiting,
+        error
     }
 }
 

@@ -1,27 +1,32 @@
 import { Link } from "react-router-dom"
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { LazyLoadImage } from "react-lazy-load-image-component"
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
+
 import useMovieList from "../hooks/useMovieList"
 import controlPage from "../utilities/controlPage"
 import seePages from "../utilities/seePages"
 import changeCategory from "../utilities/changeCategory"
+
+import ErrorMessage from "./errorMessage"
+
 import noImage from "../assets/noImage.jpg"
 import placeholderImage from "../assets/placeholderImage.jpg"
 
 const MovieListReusable = (props)=> {
 
-    const { movies, page, setPage, totalPages, setCategory, genreName, search, waiting } = useMovieList(props.section)
+    const { movies, page, setPage, totalPages, setCategory, genreName, search, waiting, error } = useMovieList(props.section)
 
+    if (error) return <ErrorMessage code={error["code"]} message={error["message"]} />
     if (movies) {
         return(
-            <div className={(props.section == "search") ? "movies-main-container movies-main-container-search" : "movies-main-container"}>
-                {(props.section == "search") && 
+            <div className={(props.section === "search") ? "movies-main-container movies-main-container-search" : "movies-main-container"}>
+                {(props.section === "search") && 
                     <span className="movies-title movies-search-title">Searching: {search}</span>
                 }
-                {(props.section == "genres") && 
+                {(props.section === "genres") && 
                     <span className="movies-title movies-genres-title">{genreName}</span>
                 }
-                {(props.section == "home") && 
+                {(props.section === "home") && 
                     <>
                         <span className="movies-title">Online movies</span>
                         <div className="category-container">

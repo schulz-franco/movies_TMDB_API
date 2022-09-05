@@ -2,9 +2,13 @@ import CastMovie from "../../components/cast/castMovie"
 import CastList from "../../components/cast/castList"
 import useCrew from "../../hooks/useCrew"
 
+import ErrorMessage from "../../components/errorMessage"
+
 const Crew = ()=> {
     
-    const { id, title, cast, image, crew } = useCrew()
+    const { id, title, cast, image, crew, error } = useCrew()
+
+    if (error) return <ErrorMessage code={error["code"]} message={error["message"]} />
 
     return(
         <>

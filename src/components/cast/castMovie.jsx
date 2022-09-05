@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { BiLeftArrowAlt } from "react-icons/bi"
-import { Link } from "react-router-dom"
+
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
 

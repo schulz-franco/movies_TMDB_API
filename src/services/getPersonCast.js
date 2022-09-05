@@ -6,6 +6,6 @@ export default async function getPersonCast(id) {
     const response = await axios.get('https://api.themoviedb.org/3/person/' + id + "/movie_credits", options);
     return response.data
   } catch (error) {
-    console.error(error);
+    throw error
   }
 }

@@ -6,6 +6,6 @@ export default async function getMovie(id, query) {
     const response = await axios.get('https://api.themoviedb.org/3/movie/' + id + query, options);
     return response.data
   } catch (error) {
-    console.error(error);
+    throw error
   }
 }

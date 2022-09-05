@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react"
+
 import getNews from "../services/getNews"
+
 import carouselMove from "../utilities/carouselMove"
 import carouselChangeIndicators from "../utilities/carouselChangeIndicators"
 

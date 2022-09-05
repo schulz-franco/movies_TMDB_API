@@ -1,4 +1,5 @@
 import { AiFillStar } from "react-icons/ai"
+
 import noImage from "../../assets/noImage.jpg"
 
 const MovieHeader = (props)=> {

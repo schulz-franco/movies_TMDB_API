@@ -1,19 +1,13 @@
 import PersonInfo from "../../components/person/personInfo"
 import usePerson from "../../hooks/usePerson"
-
-const latestBackdrop = (personCast)=> {
-    let result = null
-    personCast.cast.map(cast => {
-        if (!result) {
-            result = cast.backdrop_path ? cast.backdrop_path : null
-        }
-    })
-    return result
-}
+import ErrorMessage from "../../components/errorMessage"
+import latestBackdrop from "../../utilities/latestBackdrop"
 
 const Person = ()=> {
 
-    const { personData, personCast } = usePerson()
+    const { personData, personCast, error } = usePerson()
+
+    if (error) return <ErrorMessage code={error["code"]} message={error["message"]} />
 
     if (personData && personCast) return(
         <PersonInfo

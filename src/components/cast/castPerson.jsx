@@ -1,5 +1,6 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
 import { Link } from "react-router-dom"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
 
@@ -11,7 +12,7 @@ const CastPerson = (props)=> {
                 <Link to={"/person/" + props.id}>{props.name}</Link>
                 {props.character && <span>{props.character}</span>}
                 {props.jobs && <span>{props.jobs.map((job, index) => {
-                    if (index == (props.jobs.length - 1)) {
+                    if (index === (props.jobs.length - 1)) {
                         return job
                     }
                     return job + ", "

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
+
 import useNavbar from "../hooks/useNavbar"
+
 import navbarOpenButton from "../utilities/navbarOpenButton"
 import controlNavbar from "../utilities/controlNavbar"
+
 import logo from "../assets/logo.png"
 
 const search = ()=> {
@@ -12,7 +15,7 @@ const search = ()=> {
 
 export default function Navbar() {
 
-    const { open, setOpen, genres, navbarRef } = useNavbar()
+    const { open, setOpen, genres, navbarRef, inputRef, search, setSearch } = useNavbar()
 
     return(
         <div className="navbar-container" ref={navbarRef}>
@@ -30,8 +33,11 @@ export default function Navbar() {
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'} unmountOnExit>
                 <div className="navbar-menu-container">
                     <div className="search-bar">
-                        <input className="search-input" type="text" placeholder="Search movies..."/>
-                        <IoMdSearch onClick={search} className="search-icon"/>
+                        <input value={search && search} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                        <Link onClick={()=> {
+                        controlNavbar(open, setOpen)
+                        window.scrollTo(0 ,0)
+                    }} className="search-link" to={search ? ("/movies/search/" + search) : "/"}><IoMdSearch className="search-icon"/></Link>
                     </div>
                     <Link onClick={()=> {
                         controlNavbar(open, setOpen)

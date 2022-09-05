@@ -10,6 +10,6 @@ export default async function getNews(amount) {
     }
     return moviesNews
   } catch (error) {
-    console.error(error);
+    throw error
   }
 }

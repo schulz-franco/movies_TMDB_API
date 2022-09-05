@@ -153,14 +153,17 @@
     color: #8da0bc;
 }
 
-.navbar-menu-container .search-bar .search-icon {
+.navbar-menu-container .search-bar .search-link {
     grid-column: 1/2;
     grid-row: 1;
-    color: #178FFF;
-    font-size: 30px;
     margin-left: 78%;
     display: grid;
     align-items: center;
+}
+
+.navbar-menu-container .search-bar .search-icon {
+    color: #178FFF;
+    font-size: 30px;
 }
 
 .navbar-menu-container .navbar-link {
