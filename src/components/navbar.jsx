@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
 
@@ -9,13 +9,17 @@ import controlNavbar from "../utilities/controlNavbar"
 
 import logo from "../assets/logo.png"
 
-const search = ()=> {
-    window.location.href = "/movies/search/" + document.querySelector(".navbar-menu-container .search-bar .search-input").value
+const onSubmitHandler = (e, open, setOpen, search, navigate)=> {
+    e.preventDefault()
+    controlNavbar(open, setOpen)
+    window.scrollTo(0 ,0)
+    navigate(search ? ("/movies/search/" + search) : "/", {replace: true})
 }
 
 export default function Navbar() {
-
+    
     const { open, setOpen, genres, navbarRef, inputRef, search, setSearch } = useNavbar()
+    const navigate = useNavigate()
 
     return(
         <div className="navbar-container" ref={navbarRef}>
@@ -32,13 +36,12 @@ export default function Navbar() {
             </CSSTransition>
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'} unmountOnExit>
                 <div className="navbar-menu-container">
-                    <div className="search-bar">
-                        <input value={search && search} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
-                        <Link onClick={()=> {
-                        controlNavbar(open, setOpen)
-                        window.scrollTo(0 ,0)
-                    }} className="search-link" to={search ? ("/movies/search/" + search) : "/"}><IoMdSearch className="search-icon"/></Link>
-                    </div>
+                    <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, navigate)} id="form-search" className="search-bar">
+                        <input maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                        <button type="submit" form="form-search" className="search-link">
+                            <IoMdSearch className="search-icon"/>
+                        </button>
+                    </form>
                     <Link onClick={()=> {
                         controlNavbar(open, setOpen)
                         window.scrollTo(0 ,0)

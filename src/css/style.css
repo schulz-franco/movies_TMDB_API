@@ -166,7 +166,10 @@ body::-webkit-scrollbar-thumb {
   grid-row: 1;
   margin-left: 78%;
   display: grid;
-  align-items: center; }
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none; }
 
 .navbar-menu-container .search-bar .search-icon {
   color: #178FFF;

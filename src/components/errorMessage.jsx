@@ -4,7 +4,7 @@ import { MdOutlineUpdate } from "react-icons/md"
 function ErrorMessage(props) {
   return (
         <div className="error-background">
-            <CSSTransition appear in={true} timeout={200} classNames="error-anim" >
+            <CSSTransition appear in={true} timeout={200} classNames="error-anim">
                 <div className="error-modal">
                     <span className="code">{props.code}</span>
                     <span className="message">{props.message}</span>
