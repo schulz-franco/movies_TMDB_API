@@ -14,7 +14,7 @@ const Person = lazy(()=> import("./pages/person/index"))
 const ResError = lazy(()=> import("./components/resError"))
 
 export default function App() {
-  if (window.innerWidth <= 470) {
+  if (window.innerWidth < 485) {
     return (
       <BrowserRouter>
           <Navbar />

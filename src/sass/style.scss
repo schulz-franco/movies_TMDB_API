@@ -40,7 +40,7 @@ body::-webkit-scrollbar-thumb {
 }
   
 @mixin desktop {
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 1024px) {
         @content;
     }
 }

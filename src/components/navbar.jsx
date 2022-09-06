@@ -21,7 +21,7 @@ export default function Navbar() {
     const { open, setOpen, genres, navbarRef, inputRef, search, setSearch } = useNavbar()
     const navigate = useNavigate()
 
-    return(
+    if (window.innerWidth < 1024) return(
         <div className="navbar-container" ref={navbarRef}>
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">MDB</span>
@@ -59,6 +59,38 @@ export default function Navbar() {
                     </div>
                 </div>
             </CSSTransition>
+        </div>
+    )
+    return (
+        <div className="navbar-container" ref={navbarRef}>
+            <img className="logo" src={logo} alt="Movies" />
+            <span className="logo-title">MDB</span>
+            <span></span>
+            <Link onClick={()=> {window.scrollTo(0 ,0)}} className="navbar-link" to="/">Home</Link>
+            <div onMouseEnter={()=> setOpen(true)} onMouseLeave={()=> setOpen(false)} className="desktop-genres-container" >
+                <div className="navbar-genres-title-container">
+                    <span className="navbar-genres-title">Genres</span>
+                    <IoIosArrowDown className="navbar-arrow"/>
+                </div>
+                <CSSTransition in={open} timeout={200} classNames={''} unmountOnExit>
+                    <div>
+                        <div className="arrow-menu"></div>
+                        <div className="navbar-genres-container">
+                            {genres && genres.map(genre => {
+                                return(
+                                    <Link onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </CSSTransition>
+            </div>
+            <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, navigate)} id="form-search" className="search-bar">
+                <input maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                <button type="submit" form="form-search" className="search-link">
+                    <IoMdSearch className="search-icon"/>
+                </button>
+            </form>
         </div>
     )
 }
