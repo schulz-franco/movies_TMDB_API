@@ -8,9 +8,9 @@ import noImage from "../../assets/noImage.jpg"
 
 const MovieRecommendations = (props)=> {
     if (props.recommendations && props.recommendations.results.length!== 0) return(
-        <div style={{border: "none"}} className="section-container">
+        <div className="section-container">
             <span className="title">Recommendations</span>
-            <div style={{borderBottom: "1px solid rgb(221, 221, 221)"}} className="items">
+            <div className="items">
                 {props.recommendations.results.map(recommendation => {
                     return(
                         <Link style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + recommendation.id}>

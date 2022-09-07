@@ -13,6 +13,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 60%;
+    @include desktop {
+        padding: 120px 8rem 2rem 8rem;   
+    }
 }
 
 .movie-page-container .header-container .poster {
@@ -94,6 +97,10 @@
     row-gap: 1rem;
     background-color: #fff;
     border-bottom: 1px solid rgb(221, 221, 221);
+    @include desktop {
+        padding: 1rem 8rem;   
+        border: none;
+    }
 }
 
 .movie-page-container .info-container .texts-container .title {
@@ -109,6 +116,9 @@
     opacity: 0.7;
     font-weight: 400;
     margin-bottom: .5rem;
+    @include desktop {
+        padding-right: 18rem;   
+    }
 }
 
 .movie-page-container .info-container .texts-container .tagline {
@@ -153,6 +163,10 @@
     background-color: #fff;
     padding-top: 1rem;
     border-bottom: 1px solid rgb(221, 221, 221);
+    @include desktop {
+        padding: 1rem 8rem 0 8rem; 
+        border: none;  
+    }
 }
 
 .section-container .title {
@@ -161,6 +175,9 @@
     color: #000;
     font-size: 1.1rem;
     padding-left: 1rem;
+    @include desktop {
+        padding-left: 0;   
+    }
 }
 
 .section-container .items {
@@ -169,6 +186,24 @@
     overflow-x: auto;
     padding-bottom: .5rem;
     padding-left: 1rem;
+    @include desktop {
+        padding: 0 0 .5rem 0;   
+    }
+}
+
+.section-container .items::-webkit-scrollbar {
+    width: 0px;
+    height: 6px;
+}
+
+.section-container .items::-webkit-scrollbar-track {
+    background: #0f0f0f00;
+}
+
+.section-container .items::-webkit-scrollbar-thumb {
+    background-color: white;
+    border: 3px solid #0f0f0f33;
+    border-radius: 8px;
 }
 
 .section-container .items .item {
@@ -184,7 +219,16 @@
 }
 
 .section-container .items a {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content;
     margin-right: 1rem;
+}
+
+.section-container .items a:hover {
+    @include desktop {
+        transform: scale(0.98);
+    }
 }
 
 .section-container .items .item .img-person {
@@ -233,6 +277,15 @@
     color: #000;
     margin: 1rem;
     font-size: 1.1rem;
+    @include desktop {
+        margin: 1rem 0 1rem 0;   
+    }
+}
+
+.section-container .full-crew:hover {
+    @include desktop {
+        text-decoration: underline;
+    }
 }
 
 .movie-page-container .info-container .more-info {
@@ -241,6 +294,9 @@
     grid-auto-rows: min-content;
     background-color: #fff;
     padding: 1rem 1rem 0 1rem;
+    @include desktop {
+        padding: 1rem 8rem 0 8rem;   
+    }
 }
 
 .movie-page-container .info-container .more-info .data {

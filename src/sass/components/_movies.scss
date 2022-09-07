@@ -78,12 +78,11 @@
     grid-auto-rows: min-content;
     margin-bottom: 1.25rem;
     position: relative;
-    transition: transform 200ms;
 }
 
 .movies-list-container .movie-container:hover {
     @include desktop {
-        transform: scale(0.95);
+        transform: scale(0.98);
     }
 }
 

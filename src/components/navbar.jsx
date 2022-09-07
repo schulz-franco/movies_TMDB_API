@@ -87,7 +87,7 @@ export default function Navbar() {
                     </div>
                 </CSSTransition>
             </div>
-            <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, navigate)} id="form-search" className="search-bar">
+            <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate)} id="form-search" className="search-bar">
                 <input required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
                 <button type="submit" form="form-search" className="search-link">
                     <IoMdSearch className="search-icon"/>
