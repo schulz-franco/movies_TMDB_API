@@ -33,7 +33,7 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-items: center;
   padding: 20px 30px;
-  transition: 400ms;
+  transition: 100ms;
   position: fixed;
   left: 0;
   right: 0;
@@ -285,7 +285,7 @@ body::-webkit-scrollbar-thumb {
       left: -3rem;
       top: 2rem;
       margin: 0;
-      background-color: #080f28;
+      background-color: #1e2747;
       padding: .8rem;
       border-radius: 14px; } }
 
@@ -296,7 +296,7 @@ body::-webkit-scrollbar-thumb {
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 10px solid #080f28; }
+  border-bottom: 10px solid #1e2747; }
 
 .navbar-container .navbar-genres-container .genre-link {
   text-decoration: none;
@@ -304,13 +304,15 @@ body::-webkit-scrollbar-thumb {
   opacity: 0.6; }
   @media only screen and (min-width: 1024px) {
     .navbar-container .navbar-genres-container .genre-link {
-      padding: .6rem;
+      padding: .8rem;
       white-space: nowrap;
-      border-radius: 4px; } }
+      border-radius: 4px;
+      color: #fff;
+      opacity: 0.8; } }
 
 @media only screen and (min-width: 1024px) {
   .navbar-container .navbar-genres-container .genre-link:hover {
-    background-color: #8da0bc4d;
+    background-color: rgba(0, 0, 0, 0.3);
     color: #178FFF; } }
 
 .carousel-items-container {
@@ -341,6 +343,12 @@ body::-webkit-scrollbar-thumb {
     background-color: #080f28;
     opacity: 0.6;
     z-index: -1; }
+  @media only screen and (min-width: 1024px) {
+    .movie-carousel-container {
+      padding: 160px 8rem 20px 8rem;
+      height: 400px;
+      background-position: 50% 10%;
+      box-shadow: inset 0 -100px 100px 60px #080f28; } }
 
 .movie-carousel-container .movie-name {
   font-size: calc(1.25vw + 1.25vh + 1.8rem);
@@ -368,6 +376,21 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.3rem;
   line-height: 2rem;
   color: #8da0bc; }
+  @media only screen and (min-width: 1024px) {
+    .movie-carousel-container .movie-overview {
+      height: 60px;
+      padding-right: 8rem; } }
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 2px; }
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar-track {
+  background: #0f0f0f00; }
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.226);
+  border: 3px solid #d3d3d300; }
 
 .movie-carousel-container .movie-go-button {
   display: grid;
@@ -381,9 +404,14 @@ body::-webkit-scrollbar-thumb {
   background-color: #007aff;
   max-width: min-content;
   border-radius: 3rem;
-  margin: 2rem 0 4rem 0; }
+  margin: 2rem 0 4rem 0;
+  transition: 200ms; }
 
-.movie-carousel-container .movie-go-button a {
+@media only screen and (min-width: 1024px) {
+  .movie-carousel-container .movie-go-button:hover {
+    transform: scale(1.05); } }
+
+.movie-carousel-container .movie-go-button span {
   color: #fff; }
 
 .carousel-control {
@@ -396,6 +424,10 @@ body::-webkit-scrollbar-thumb {
   position: relative;
   z-index: 0;
   margin-top: -3rem; }
+  @media only screen and (min-width: 1024px) {
+    .carousel-control {
+      padding: 0 8rem;
+      justify-content: end; } }
 
 .carousel-control .control-button {
   width: .750rem;
@@ -463,7 +495,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.125rem;
   text-transform: uppercase;
   font-weight: 400;
-  padding: 0.4rem 0; }
+  padding: 0.4rem 0;
+  cursor: pointer; }
 
 .movies-main-container .category-container .category-current {
   color: #fff;

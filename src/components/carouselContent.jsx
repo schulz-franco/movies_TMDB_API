@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaPlay } from "react-icons/fa"
 
-const imagesUrl = "https://image.tmdb.org/t/p/w500"
+const imagesUrl = "https://image.tmdb.org/t/p/original"
 
 const CarouselContent = (props)=> {
 
@@ -17,10 +17,10 @@ const CarouselContent = (props)=> {
                 <span className="movie-info-date">{props.year}</span>
             </div>
             <p className="movie-overview">{props.overview}</p>
-            <div className="movie-go-button">
+            <Link to={"/movie/" + props.id} className="movie-go-button">
                 <FaPlay className="movie-go-button-icon" />
-                <Link to={"/movie/" + props.id}>See more</Link>
-            </div>
+                <span>See more</span>
+            </Link>
         </div>
     )
 }

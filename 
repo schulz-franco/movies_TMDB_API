@@ -1,0 +1,37 @@
+[33mcommit 8e2c7a1973b488c3cbee6ed52485fc3113d321e4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Wed Sep 7 02:41:06 2022 -0300
+
+    Revert "navbar responsive"
+    
+    This reverts commit 27ac0781237b79e3f9e11259de8730b96af4cd0c.
+
+[33mcommit 27ac0781237b79e3f9e11259de8730b96af4cd0c[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Tue Sep 6 18:20:42 2022 -0300
+
+    navbar responsive
+
+[33mcommit c01a6220b1c542d23e7cb61339ee3c7515ce39f4[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Mon Sep 5 22:55:08 2022 -0300
+
+    onSubmitHandler of search bar
+
+[33mcommit f3c79ec361eea6eef2c956fc6daf6e187945d76b[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Mon Sep 5 17:51:08 2022 -0300
+
+    http error handling and fix to dynamic path when searching
+
+[33mcommit a2266795ae3453b8500670a95900d15761c14198[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Sun Sep 4 03:35:03 2022 -0300
+
+    added actor section
+
+[33mcommit d0126e07a472a3174ba779def7e8a64208bf4ed1[m
+Author: schulz-franco <fschulz2222@gmail.com>
+Date:   Sat Sep 3 18:20:16 2022 -0300
+
+    added full crew section

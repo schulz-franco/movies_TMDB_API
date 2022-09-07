@@ -28,6 +28,12 @@
         opacity: 0.6;
         z-index: -1;
     }
+    @include desktop {
+        padding: 160px 8rem 20px 8rem;
+        height: 400px;
+        background-position: 50% 10%;
+        box-shadow: inset 0 -100px 100px 60px #080f28;
+    }
 }
 
 .movie-carousel-container .movie-name {
@@ -60,6 +66,24 @@
     font-size: 1.3rem;
     line-height: 2rem;
     color: #8da0bc;
+    @include desktop {
+        height: 60px;
+        padding-right: 8rem;
+    }
+}
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 2px;
+}
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar-track {
+    background: #0f0f0f00;
+}
+
+.movie-carousel-container .movie-overview::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.226);
+    border: 3px solid #d3d3d300;
 }
 
 .movie-carousel-container .movie-go-button {
@@ -75,9 +99,16 @@
     max-width: min-content;
     border-radius: 3rem;
     margin: 2rem 0 4rem 0;
+    transition: 200ms;
 }
 
-.movie-carousel-container .movie-go-button a {
+.movie-carousel-container .movie-go-button:hover {
+    @include desktop {
+        transform: scale(1.05);
+    }
+}
+
+.movie-carousel-container .movie-go-button span {
     color: #fff;
 }
 
@@ -91,6 +122,10 @@
     position: relative;
     z-index: 0;
     margin-top: -3rem;
+    @include desktop {
+        padding: 0 8rem;
+        justify-content: end;
+    }
 }
 
 .carousel-control .control-button {

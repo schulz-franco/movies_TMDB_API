@@ -16,12 +16,13 @@ const onSubmitHandler = (e, open, setOpen, search, navigate)=> {
     navigate(search ? ("/movies/search/" + search) : "/", {replace: true})
 }
 
+
 export default function Navbar() {
     
-    const { open, setOpen, genres, navbarRef, inputRef, search, setSearch } = useNavbar()
+    const { open, setOpen, genres, navbarRef, inputRef, search, setSearch, isDesktop } = useNavbar()
     const navigate = useNavigate()
 
-    if (window.innerWidth < 1024) return(
+    if (!isDesktop) return(
         <div className="navbar-container" ref={navbarRef}>
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">MDB</span>

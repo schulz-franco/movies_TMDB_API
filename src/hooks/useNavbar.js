@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { useMediaQuery } from "react-responsive"
 
 import getGenres from "../services/getGenres"
 
@@ -10,6 +11,9 @@ const useNavbar = ()=> {
     const [search, setSearch] = useState("")
     const navbarRef = useRef(null)
     const inputRef = useRef(null)
+    const isDesktop = useMediaQuery({
+        query: '(min-width: 1024px)'
+    })
 
     useEffect(()=> {
         getGenres().then(res => {
@@ -25,7 +29,8 @@ const useNavbar = ()=> {
         navbarRef,
         inputRef,
         search,
-        setSearch
+        setSearch,
+        isDesktop
     }
 }
 

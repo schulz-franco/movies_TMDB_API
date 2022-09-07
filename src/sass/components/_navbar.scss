@@ -5,7 +5,7 @@
     align-items: center;
     justify-items: center;
     padding: 20px 30px;
-    transition: 400ms;
+    transition: 100ms;
     position: fixed;
     left: 0;
     right: 0;
@@ -287,7 +287,7 @@
         left: -3rem;
         top: 2rem;
         margin: 0;
-        background-color: #080f28;
+        background-color: #1e2747;
         padding: .8rem;
         border-radius: 14px;
     }
@@ -300,7 +300,7 @@
     border-right: 10px solid transparent;
     border-top: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 10px solid #080f28;
+    border-bottom: 10px solid #1e2747;
 }
 
 .navbar-container .navbar-genres-container .genre-link {
@@ -308,15 +308,17 @@
     color: #8da0bc;
     opacity: 0.6;
     @include desktop {
-        padding: .6rem;
+        padding: .8rem;
         white-space: nowrap;
         border-radius: 4px;
+        color: #fff;
+        opacity: 0.8;
     }
 }
 
 .navbar-container .navbar-genres-container .genre-link:hover {
     @include desktop {
-        background-color: #8da0bc4d;
+        background-color: rgba(0,0,0,.3);
         color: #178FFF;
     }
 }
