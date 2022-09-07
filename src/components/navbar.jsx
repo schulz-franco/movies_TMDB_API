@@ -9,11 +9,12 @@ import controlNavbar from "../utilities/controlNavbar"
 
 import logo from "../assets/logo.png"
 
-const onSubmitHandler = (e, open, setOpen, search, navigate)=> {
+const onSubmitHandler = (e, open, setOpen, search, setSearch, navigate)=> {
     e.preventDefault()
     controlNavbar(open, setOpen)
     window.scrollTo(0 ,0)
-    navigate(search ? ("/movies/search/" + search) : "/", {replace: true})
+    navigate((search.length != "") ? ("/movies/search/" + search) : "/", {replace: true})
+    setSearch("")
 }
 
 
@@ -37,8 +38,8 @@ export default function Navbar() {
             </CSSTransition>
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'} unmountOnExit>
                 <div className="navbar-menu-container">
-                    <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, navigate)} id="form-search" className="search-bar">
-                        <input maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                    <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate)} id="form-search" className="search-bar">
+                        <input required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
                         <button type="submit" form="form-search" className="search-link">
                             <IoMdSearch className="search-icon"/>
                         </button>
@@ -87,7 +88,7 @@ export default function Navbar() {
                 </CSSTransition>
             </div>
             <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, navigate)} id="form-search" className="search-bar">
-                <input maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                <input required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
                 <button type="submit" form="form-search" className="search-link">
                     <IoMdSearch className="search-icon"/>
                 </button>
