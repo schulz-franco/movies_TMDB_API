@@ -7,7 +7,7 @@ import noImage from "../../assets/noImage.jpg"
 
 const CastMovie = (props)=> {
     return(
-        <div style={props.backdrop && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500" + props.backdrop + ")"}} className="cast-movie-container">
+        <div style={props.backdrop && {backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original" + props.backdrop + ")"}} className="cast-movie-container">
             {props.image ? <LazyLoadImage  wrapperClassName="lazy-load-poster" width={80} height={110} src={"https://image.tmdb.org/t/p/w200" + props.image} placeholderSrc={placeholderImage} /> : <img width={80} height={110} src={noImage} />}
             <div className="cast-movie-title">
                 <span className="title">{props.title}</span>

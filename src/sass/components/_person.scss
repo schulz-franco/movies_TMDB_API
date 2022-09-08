@@ -7,6 +7,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 40%;
+    @include desktop {
+        padding: 7.5rem 8rem 1rem 8rem;   
+    }
 }
 
 .person-container img {
@@ -26,8 +29,13 @@
 
 .bio-container {
     background-color: #fff;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.11);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+    @include desktop {
+        padding: 1rem 8rem;   
+        border: none;
+    }
 }
 
 .bio-container .bio-title {
@@ -40,7 +48,7 @@
 .bio-container .biography {
     margin-top: 1rem;
     font-size: 1.1rem;
-    opacity: 0.8;
+    opacity: 0.7;
     line-height: 1.3rem;
 }
 
@@ -49,7 +57,10 @@
     grid-template-columns: auto;
     grid-auto-rows: min-content;
     background-color: #fff;
-    padding: 0 2rem 1rem 2rem;
+    padding: 0 1rem 1rem 1rem;
+    @include desktop {
+        padding: 0 8rem 1rem 8rem;   
+    }
 }
 
 .personal-info .title {
@@ -57,11 +68,19 @@
     font-weight: 700;
     opacity: 0.9;
     margin-top: 1rem;
+    @include tablet {
+        font-size: 1.5rem;
+        font-weight: 500;
+        opacity: 0.9;
+    }
+    @include desktop {
+        margin-top: 2rem;
+    }
 }
 
 .personal-info .known-container {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: min-content;
 }
 
