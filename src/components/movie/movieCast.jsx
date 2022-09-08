@@ -7,7 +7,9 @@ import noImage from "../../assets/noImage.jpg"
 const MovieCast = (props)=> {
     if (props.credits && props.credits.cast.length!== 0) return(
         <div className="section-container">
-            <span className="title">Top Billed Cast</span>
+            <div className="section-header">
+                <span className="title">Top Billed Cast</span>
+            </div>
             <div className="items">
                 {props.credits.cast.map((person, index) => {
                     if (index < 9) {
