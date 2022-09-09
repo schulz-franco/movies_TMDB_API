@@ -18,7 +18,7 @@ const PersonMovies = (props)=> {
     if (props.cast && props.cast.length > 2) return( 
         <div style={{border: "none"}} className="section-container">
             <div className="section-header">
-                <span style={{fontSize: "1.2rem"}} className="title">Recommendations</span>
+                <span style={{fontSize: "1.2rem"}} className="title">Known for</span>
                 <span></span>
                 {list && 
                     <div className="arrows">
@@ -30,7 +30,7 @@ const PersonMovies = (props)=> {
             <div onLoad={()=> setList(document.querySelector(elementMovies))} className="items" style={{marginBottom: "2rem"}}>
                 {props.cast.map((movie, index) => {
                     if (index < 10) return(
-                        <Link style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + movie.id}>
+                        <Link key={movie.id} style={{marginBottom: ".5rem"}} onClick={scrollTop} to={"/movie/" + movie.id}>
                             {(movie.poster_path) ? <LazyLoadImage  wrapperClassName="img-movie" width={150} height={200} className="img-movie" src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} placeholderSrc={placeholderImage} /> : <img width={150} height={200} className="img-movie" src={noImage} alt={movie.title}/>}
                             <span className="recommendation-movie-title">{movie.title}</span>
                         </Link>

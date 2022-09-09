@@ -11,10 +11,7 @@ const MovieInfo = lazy(()=> import("./pages/movie/index"))
 const Crew = lazy(()=> import("./pages/crew/index"))
 const Person = lazy(()=> import("./pages/person/index"))
 
-const ResError = lazy(()=> import("./components/resError"))
-
 export default function App() {
-  if (window.innerWidth < 485) {
     return (
       <BrowserRouter>
           <Navbar />
@@ -52,11 +49,4 @@ export default function App() {
           </Routes>
       </BrowserRouter>
     );
-  } else {
-    return(
-    <Suspense fallback={<Loading />}>
-      <ResError />
-    </Suspense>
-    )
-  }
 }

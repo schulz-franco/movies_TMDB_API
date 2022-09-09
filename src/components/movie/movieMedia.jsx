@@ -27,13 +27,13 @@ const MovieMedia = (props)=> {
         <div onLoad={()=> setList(document.querySelector(elementMedia))} className="items">
             {(props.images.backdrops.length!== 0) && props.images.backdrops.map(image => {
                 return(
-                    <LazyLoadImage  wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={props.title.title} placeholderSrc={placeholderImage} />
+                    <LazyLoadImage key={image.file_path}  wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w400" + image.file_path} alt={props.title.title} placeholderSrc={placeholderImage} />
                 )
             })}
             {(props.images.posters.length!== 0) && props.images.posters.map((image, index) => {
                 if (index < 10) {
                     return(
-                        <LazyLoadImage  wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w500" + image.file_path} alt={props.title.title} placeholderSrc={placeholderImage} />
+                        <LazyLoadImage key={image.file_path}  wrapperClassName="lazy-load-img-backdrop" width={"min-content"} height={200} className="img-backdrop" src={"https://image.tmdb.org/t/p/w400" + image.file_path} alt={props.title.title} placeholderSrc={placeholderImage} />
                     )
                 }
             })}

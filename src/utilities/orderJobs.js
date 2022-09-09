@@ -20,7 +20,6 @@ const orderJobs = (crew)=> {
             }
         })
     }
-    console.log(data)
     return data
 }
 

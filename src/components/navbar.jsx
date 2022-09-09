@@ -9,9 +9,9 @@ import controlNavbar from "../utilities/controlNavbar"
 
 import logo from "../assets/logo.png"
 
-const onSubmitHandler = (e, open, setOpen, search, setSearch, navigate)=> {
+const onSubmitHandler = (e, open, setOpen, search, setSearch, navigate, isDesktop)=> {
     e.preventDefault()
-    controlNavbar(open, setOpen)
+    !isDesktop && controlNavbar(open, setOpen)
     window.scrollTo(0 ,0)
     navigate((search.length != "") ? ("/movies/search/" + search) : "/", {replace: true})
     setSearch("")
@@ -38,8 +38,8 @@ export default function Navbar() {
             </CSSTransition>
             <CSSTransition in={open} timeout={200} classNames={'navbar-menu-anim'} unmountOnExit>
                 <div className="navbar-menu-container">
-                    <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate)} id="form-search" className="search-bar">
-                        <input required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+                    <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate, isDesktop)} id="form-search" className="search-bar">
+                        <input value={search} required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
                         <button type="submit" form="form-search" className="search-link">
                             <IoMdSearch className="search-icon"/>
                         </button>
@@ -55,7 +55,7 @@ export default function Navbar() {
                     <div className="navbar-genres-container">
                         {genres && genres.map(genre => {
                             return(
-                                <Link onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
+                                <Link key={genre.id} onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
                             )
                         })}
                     </div>
@@ -80,15 +80,15 @@ export default function Navbar() {
                         <div className="navbar-genres-container">
                             {genres && genres.map(genre => {
                                 return(
-                                    <Link onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
+                                    <Link key={genre.id} onClick={()=> controlNavbar(open, setOpen)} className="genre-link" to={"/movies/genres/" + genre.id + "/" + genre.name}>{genre.name}</Link>
                                 )
                             })}
                         </div>
                     </div>
                 </CSSTransition>
             </div>
-            <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate)} id="form-search" className="search-bar">
-                <input required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
+            <form onSubmit={(e)=> onSubmitHandler(e, open, setOpen, search, setSearch, navigate, isDesktop)} id="form-search" className="search-bar">
+                <input value={search} required maxLength={40} ref={inputRef} onChange={()=> setSearch(inputRef.current.value)} className="search-input" type="text" placeholder="Search movies..."/>
                 <button type="submit" form="form-search" className="search-link">
                     <IoMdSearch className="search-icon"/>
                 </button>

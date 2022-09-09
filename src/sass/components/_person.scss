@@ -82,6 +82,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: min-content;
+    @include desktop {
+        grid-template-columns: 20% 20%;
+    }
 }
 
 .personal-info .person-date-valor {

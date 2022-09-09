@@ -14,7 +14,7 @@ const MovieCast = (props)=> {
                 {props.credits.cast.map((person, index) => {
                     if (index < 9) {
                         return(
-                            <Link to={"/person/" + person.id} className="item">
+                            <Link key={person.id} to={"/person/" + person.id} className="item">
                                 {(person.profile_path) ? <LazyLoadImage  wrapperClassName="img-person" width={"100%"} height={140} className="img-person" src={"https://image.tmdb.org/t/p/w500" + person.profile_path} alt={person.original_name} placeholderSrc={placeholderImage} /> : <img width={100} height={140} className="img-person" src={noImage} alt="Without image" />}
                                 <span className="name">{person.name}</span>
                                 <span className="job">{person.character}</span>
