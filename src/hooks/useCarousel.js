@@ -17,10 +17,11 @@ const useCarousel = ()=> {
     }, [])
 
     useEffect(()=> {
-        setTimeout(()=> {
+        let timer = setTimeout(()=> {
             carouselMove(currentItem, setCurrentItem)
             carouselChangeIndicators(carouselIndicators, currentItem)
         }, 5000)
+        return () => clearTimeout(timer)
     }, [currentItem])
 
     return {

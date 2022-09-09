@@ -931,25 +931,23 @@ body::-webkit-scrollbar-thumb {
 
 .error-background {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
   align-items: end;
-  justify-items: center;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  z-index: 2; }
+  z-index: 2;
+  padding: 1rem; }
 
 .error-background .error-modal {
   display: grid;
   grid-template-columns: auto min-content;
   grid-template-rows: min-content min-content;
-  width: 80%;
   background-color: #fff;
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: .4rem;
   transition: 200ms;
   align-items: center; }

@@ -1,13 +1,14 @@
 # How to use
 
 If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
-Go to src/services/options.js and paste your token into the variable called "api_key"
+Go to src/services/options.js and paste your token into the variable called "PUBLIC_TOKEN"
 
 # Current pendings list
 
-- Responsive design
+- Reshape carousel component
+- Fix scrollable components in movie section
+- Responsive design details
 - Finish clean architecture
-- Make reusable components
 - Implement context
 
 # Getting Started with Create React App
