@@ -12,7 +12,7 @@ import ErrorMessage from "../errorMessage"
 
 const Movie = ()=> {
 
-    const { movie, credits, images, recommendations, error } = useMovie()
+    const { movie, credits, images, recommendations, error, scrollableMedia, scrollableRecommendations } = useMovie()
 
     if (error) return <ErrorMessage code={error["code"]} message={error["message"]} />
 
@@ -23,8 +23,8 @@ const Movie = ()=> {
                 <MovieBasicInfo movie={movie} />
                 <MovieTextContainer movie={movie} credits={credits} />
                 <MovieCast credits={credits} id={movie.id} />
-                <MovieMedia images={images} title={movie.title} />  
-                <MovieRecommendations recommendations={recommendations} title={movie.title} />
+                <MovieMedia mediaRef={scrollableMedia} images={images} title={movie.title} />  
+                <MovieRecommendations mediaRef={scrollableMedia} recommendationsRef={scrollableRecommendations} recommendations={recommendations} title={movie.title} />
                 <MovieMoreInfo movie={movie} />
             </div>
         </div>

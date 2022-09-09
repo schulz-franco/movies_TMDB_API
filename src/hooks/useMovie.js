@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import getMovie from "../services/getMovie"
@@ -11,6 +11,8 @@ const useMovie = ()=> {
     const [images, setImages] = useState(null)
     const [recommendations, setRecommendations] = useState(null)
     const [error, setError] = useState(null)
+    const scrollableMedia = useRef(null)
+    const scrollableRecommendations = useRef(null)
 
     useEffect(()=> {
         getMovie(id, "").then(res=> {
@@ -40,7 +42,9 @@ const useMovie = ()=> {
         credits,
         images,
         recommendations,
-        error
+        error,
+        scrollableMedia,
+        scrollableRecommendations
     }
 }
 
