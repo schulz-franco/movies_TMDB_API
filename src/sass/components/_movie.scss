@@ -278,11 +278,12 @@
     grid-template-columns: auto;
     grid-template-rows: min-content min-content;
     margin-right: 1rem;
+    width: 150px;
 }
 
 .section-container .items a:hover {
     @include desktop {
-        transform: scale(0.98);
+        transform: scale(0.99);
     }
 }
 
@@ -325,6 +326,7 @@
     color: #000;
     font-size: .9rem;
     padding-right: 1rem;
+    width: 150px;
 }
 
 .section-container .full-crew {

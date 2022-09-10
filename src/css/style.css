@@ -527,12 +527,16 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 1.25rem;
   position: relative; }
 
-@media only screen and (min-width: 1024px) {
-  .movies-list-container .movie-container:hover {
-    transform: scale(0.98); } }
-
 .movies-list-container .movie-container img {
   border-radius: .200rem; }
+  @media only screen and (min-width: 1024px) {
+    .movies-list-container .movie-container img {
+      border: 2px solid rgba(255, 255, 255, 0);
+      transition: border 100ms; } }
+
+@media only screen and (min-width: 1024px) {
+  .movies-list-container .movie-container img:hover {
+    border-color: rgba(255, 255, 255, 0.61); } }
 
 .movies-list-container .movie-container .lazy-load-image-movie {
   border-radius: .250rem; }
@@ -857,11 +861,12 @@ body::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: min-content min-content;
-  margin-right: 1rem; }
+  margin-right: 1rem;
+  width: 150px; }
 
 @media only screen and (min-width: 1024px) {
   .section-container .items a:hover {
-    transform: scale(0.98); } }
+    transform: scale(0.99); } }
 
 .section-container .items .item .img-person {
   border-top-left-radius: .4rem;
@@ -894,7 +899,8 @@ body::-webkit-scrollbar-thumb {
 .section-container .items .recommendation-movie-title {
   color: #000;
   font-size: .9rem;
-  padding-right: 1rem; }
+  padding-right: 1rem;
+  width: 150px; }
 
 .section-container .full-crew {
   font-weight: bold;

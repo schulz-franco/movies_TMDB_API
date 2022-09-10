@@ -81,14 +81,19 @@
     position: relative;
 }
 
-.movies-list-container .movie-container:hover {
-    @include desktop {
-        transform: scale(0.98);
-    }
-}
 
 .movies-list-container .movie-container img {
     border-radius: .200rem;
+    @include desktop {
+        border: 2px solid rgba(255, 255, 255, 0);
+        transition: border 100ms;
+    }
+}
+
+.movies-list-container .movie-container img:hover {
+    @include desktop {
+        border-color: rgba(255, 255, 255, 0.61)
+    }
 }
 
 .movies-list-container .movie-container .lazy-load-image-movie {
