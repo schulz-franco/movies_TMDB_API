@@ -77,7 +77,7 @@ export default function Navbar() {
             <span className="logo-title">MDB</span>
             <span></span>
             <Link onClick={()=> {
-                animateScroll.scrollToTop(scrollType)
+                window.scrollTo(0, 0)
             }} className="navbar-link" to="/">Home</Link>
             <div onMouseEnter={()=> setOpen(true)} onMouseLeave={()=> setOpen(false)} className="desktop-genres-container" >
                 <div className="navbar-genres-title-container">

@@ -529,17 +529,17 @@ body::-webkit-scrollbar-thumb {
 
 .movies-list-container .movie-container img {
   border-radius: .200rem; }
-  @media only screen and (min-width: 1024px) {
-    .movies-list-container .movie-container img {
-      border: 2px solid rgba(255, 255, 255, 0);
-      transition: border 100ms; } }
 
 @media only screen and (min-width: 1024px) {
   .movies-list-container .movie-container img:hover {
-    border-color: rgba(255, 255, 255, 0.61); } }
+    opacity: 0.8; } }
 
 .movies-list-container .movie-container .lazy-load-image-movie {
   border-radius: .250rem; }
+
+@media only screen and (min-width: 1024px) {
+  .movies-list-container .movie-container .lazy-load-image-movie:hover ~ .movie-title {
+    color: #007aff; } }
 
 .movies-list-container .movie-container .movie-title {
   font-size: .875rem;
@@ -549,9 +549,18 @@ body::-webkit-scrollbar-thumb {
   padding-top: 0.5rem;
   color: #fff; }
 
-.movies-list-container .movie-container .movie-year {
+.movies-list-container .movie-container .year {
   position: absolute;
-  opacity: 0; }
+  opacity: 1;
+  right: 1rem;
+  top: 13rem;
+  background-color: #007aff;
+  padding: .2rem .5rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  color: #fff;
+  font-weight: 500;
+  text-align: center; }
 
 .movies-main-container .pagination-container {
   display: grid;
@@ -857,6 +866,9 @@ body::-webkit-scrollbar-thumb {
   border-top-right-radius: .4rem;
   margin-right: 1rem; }
 
+.section-container .items .item-cast {
+  width: 90px; }
+
 .section-container .items a {
   display: grid;
   grid-template-columns: auto;
@@ -865,13 +877,13 @@ body::-webkit-scrollbar-thumb {
   width: 150px; }
 
 @media only screen and (min-width: 1024px) {
-  .section-container .items a:hover {
-    transform: scale(0.99); } }
+  .section-container .items a img:hover {
+    opacity: 0.8; } }
 
 .section-container .items .item .img-person {
   border-top-left-radius: .4rem;
   border-top-right-radius: .4rem;
-  min-width: 100px; }
+  width: 90px; }
 
 .section-container .items .lazy-load-img-backdrop {
   margin-bottom: .5rem;

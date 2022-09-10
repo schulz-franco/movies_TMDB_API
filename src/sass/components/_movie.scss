@@ -273,6 +273,10 @@
     margin-right: 1rem;
 }
 
+.section-container .items .item-cast {
+    width: 90px;
+}
+
 .section-container .items a {
     display: grid;
     grid-template-columns: auto;
@@ -281,16 +285,16 @@
     width: 150px;
 }
 
-.section-container .items a:hover {
+.section-container .items a img:hover {
     @include desktop {
-        transform: scale(0.99);
+        opacity: 0.8;
     }
 }
 
 .section-container .items .item .img-person {
     border-top-left-radius: .4rem;
     border-top-right-radius: .4rem;
-    min-width: 100px;
+    width: 90px;
 }
 
 .section-container .items .lazy-load-img-backdrop {

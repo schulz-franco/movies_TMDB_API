@@ -81,23 +81,24 @@
     position: relative;
 }
 
-
 .movies-list-container .movie-container img {
     border-radius: .200rem;
-    @include desktop {
-        border: 2px solid rgba(255, 255, 255, 0);
-        transition: border 100ms;
-    }
 }
 
 .movies-list-container .movie-container img:hover {
     @include desktop {
-        border-color: rgba(255, 255, 255, 0.61)
+        opacity: 0.8;
     }
 }
 
 .movies-list-container .movie-container .lazy-load-image-movie {
     border-radius: .250rem;
+}
+
+.movies-list-container .movie-container .lazy-load-image-movie:hover ~ .movie-title {
+    @include desktop {
+        color: #007aff;
+    }
 }
 
 .movies-list-container .movie-container .movie-title {
@@ -109,9 +110,18 @@
     color: #fff;
 }
 
-.movies-list-container .movie-container .movie-year {
+.movies-list-container .movie-container .year {
     position: absolute;
-    opacity: 0;
+    opacity: 1;
+    right: 1rem;
+    top: 13rem;
+    background-color: #007aff;
+    padding: .2rem .5rem;
+    border-radius: 20px;
+    font-size: .8rem;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
 }
 
 .movies-main-container .pagination-container {
