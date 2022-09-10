@@ -7,7 +7,6 @@ import MovieCast from "./movieCast"
 import MovieMedia from "./movieMedia"
 import MovieRecommendations from "./movieRecommendations"
 import MovieMoreInfo from "./movieMoreInfo"
-
 import ErrorMessage from "../errorMessage"
 
 const Movie = ()=> {

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 import { IoIosArrowDown, IoMdClose, IoMdMenu, IoMdSearch } from "react-icons/io"
+import { animateScroll } from "react-scroll"
 
 import useNavbar from "../hooks/useNavbar"
 
@@ -8,6 +9,13 @@ import navbarOpenButton from "../utilities/navbarOpenButton"
 import controlNavbar from "../utilities/controlNavbar"
 
 import logo from "../assets/logo.png"
+
+const scrollType = {
+    duration: 400,
+    delay: 0,
+    smooth: true, // linear “easeInQuint” “easeOutCubic” 
+    offset: 0,
+ };
 
 const onSubmitHandler = (e, open, setOpen, search, setSearch, navigate, isDesktop)=> {
     e.preventDefault()
@@ -46,7 +54,7 @@ export default function Navbar() {
                     </form>
                     <Link onClick={()=> {
                         controlNavbar(open, setOpen)
-                        window.scrollTo(0 ,0)
+                        window.scrollTo(0, 0)
                     }} className="navbar-link" to="/">Home</Link>
                     <div className="navbar-genres-title-container">
                         <span className="navbar-genres-title">Genres</span>
@@ -68,7 +76,9 @@ export default function Navbar() {
             <img className="logo" src={logo} alt="Movies" />
             <span className="logo-title">MDB</span>
             <span></span>
-            <Link onClick={()=> {window.scrollTo(0 ,0)}} className="navbar-link" to="/">Home</Link>
+            <Link onClick={()=> {
+                animateScroll.scrollToTop(scrollType)
+            }} className="navbar-link" to="/">Home</Link>
             <div onMouseEnter={()=> setOpen(true)} onMouseLeave={()=> setOpen(false)} className="desktop-genres-container" >
                 <div className="navbar-genres-title-container">
                     <span className="navbar-genres-title">Genres</span>

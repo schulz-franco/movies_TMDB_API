@@ -4,9 +4,17 @@ import { GoArrowDown } from "react-icons/go"
 import scrollItems from "../../utilities/scrollItems"
 import placeholderImage from "../../assets/placeholderImage.jpg"
 import noImage from "../../assets/noImage.jpg"
+import { animateScroll } from "react-scroll"
+
+const scrollType = {
+    duration: 400,
+    delay: 0,
+    smooth: true, // linear “easeInQuint” “easeOutCubic” 
+    offset: 0,
+ };
 
 const onClickHandler = (mediaRef, recommendationsRef)=> {
-    window.scrollTo(0, 0)
+    animateScroll.scrollToTop(scrollType)
     mediaRef.current.scrollLeft = 0
     recommendationsRef.current.scrollLeft = 0
 }

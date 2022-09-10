@@ -12,6 +12,15 @@ import ErrorMessage from "./errorMessage"
 import noImage from "../assets/noImage.jpg"
 import placeholderImage from "../assets/placeholderImage.jpg"
 
+import { scroller, Element } from "react-scroll"
+
+const scrollType = {
+    duration: 400,
+    delay: 0,
+    smooth: true, // linear “easeInQuint” “easeOutCubic” 
+    offset: -120,
+ };
+
 const MovieListReusable = (props)=> {
 
     const { movies, page, setPage, totalPages, setCategory, genreName, search, waiting, error } = useMovieList(props.section)
@@ -20,21 +29,23 @@ const MovieListReusable = (props)=> {
     if (movies) {
         return(
             <div className={(props.section === "search") ? "movies-main-container movies-main-container-search" : "movies-main-container"}>
-                {(props.section === "search") && 
-                    <span className="movies-title movies-search-title">Searching: {search}</span>
-                }
-                {(props.section === "genres") && 
-                    <span className="movies-title movies-genres-title">{genreName}</span>
-                }
-                {(props.section === "home") && 
-                    <>
-                        <span className="movies-title">Online movies</span>
-                        <div className="category-container">
-                            <span onClick={(ev)=> changeCategory(ev, "latest", setCategory, page, setPage)} className="category category-current">Latest</span>
-                            <span onClick={(ev)=> changeCategory(ev, "ranking", setCategory, page, setPage)} className="category">Popular</span>
-                        </div>
-                    </>
-                }
+                <Element name="title">
+                    {(props.section === "search") && 
+                        <span className="movies-title movies-search-title">Searching: {search}</span>
+                    }
+                    {(props.section === "genres") && 
+                        <span className="movies-title movies-genres-title">{genreName}</span>
+                    }
+                    {(props.section === "home") && 
+                        <>
+                            <span className="movies-title">Online movies</span>
+                            <div className="category-container">
+                                <span onClick={(ev)=> changeCategory(ev, "latest", setCategory, page, setPage)} className="category category-current">Latest</span>
+                                <span onClick={(ev)=> changeCategory(ev, "ranking", setCategory, page, setPage)} className="category">Popular</span>
+                            </div>
+                        </>
+                    }
+                </Element>
                 <div className="movies-list-container">
                     {movies && movies.map(movie => {
                         return(
@@ -47,13 +58,21 @@ const MovieListReusable = (props)=> {
                 </div>
                 {(totalPages > 1) && 
                     <div className="pagination-container">
-                        <BiLeftArrowAlt onClick={(ev) => controlPage(ev, "prev", setPage, page)} className="arrow arrow1" />
+                        <BiLeftArrowAlt onClick={(ev) => {
+                            controlPage(ev, "prev", setPage, page)
+                            scroller.scrollTo("title", scrollType)
+                        }
+                    } className="arrow arrow1" />
                         <div className="pages">
                             <span className="page">{page}</span>
                             <span>of</span>
                             <span className="total">{seePages(totalPages)}</span>
                         </div>
-                        <BiRightArrowAlt onClick={(ev) => controlPage(ev, "next", setPage, page)} className="arrow arrow2" />
+                        <BiRightArrowAlt onClick={(ev) => {
+                            controlPage(ev, "next", setPage, page)
+                            scroller.scrollTo("title", scrollType)
+                        }
+                    } className="arrow arrow2" />
                     </div>
                 }
             </div>
