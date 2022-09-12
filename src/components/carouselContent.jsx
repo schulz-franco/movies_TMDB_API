@@ -6,7 +6,7 @@ const imagesUrl = "https://image.tmdb.org/t/p/original"
 const CarouselContent = (props)=> {
 
     let background_style = {
-        backgroundImage: "url(" + imagesUrl + props.backdrop_url + ")"
+        backgroundImage: "linear-gradient(rgba(8, 15, 40, 0.644), rgba(8, 15, 40, 0.644)), url(" + imagesUrl + props.backdrop_url + ")"
     }
 
     return(
