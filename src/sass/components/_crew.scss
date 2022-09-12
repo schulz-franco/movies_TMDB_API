@@ -6,9 +6,15 @@
     background-repeat: no-repeat;
     background-position: center;
     padding: 7rem 2rem 2rem 2rem;
+    background-color: #080f28;
     @include desktop {
         padding: 7rem 8rem 2rem 8rem;
     }
+}
+
+.page-cast-container {
+    background-color: #fff;
+    height: 100%;
 }
 
 .cast-movie-container .lazy-load-poster {
@@ -76,6 +82,12 @@
     @include desktop {
         padding: 2rem 8rem 1rem 8rem;
     }
+}
+
+.cast-lists-container .container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 100%;
 }
 
 .cast-list-container {

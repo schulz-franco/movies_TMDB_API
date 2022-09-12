@@ -1017,10 +1017,15 @@ body::-webkit-scrollbar-thumb {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 7rem 2rem 2rem 2rem; }
+  padding: 7rem 2rem 2rem 2rem;
+  background-color: #080f28; }
   @media only screen and (min-width: 1000px) {
     .cast-movie-container {
       padding: 7rem 8rem 2rem 8rem; } }
+
+.page-cast-container {
+  background-color: #fff;
+  height: 100%; }
 
 .cast-movie-container .lazy-load-poster {
   border-radius: .3rem; }
@@ -1077,6 +1082,11 @@ body::-webkit-scrollbar-thumb {
   @media only screen and (min-width: 1000px) {
     .cast-lists-container {
       padding: 2rem 8rem 1rem 8rem; } }
+
+.cast-lists-container .container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%; }
 
 .cast-list-container {
   padding-bottom: 2rem; }

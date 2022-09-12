@@ -12,14 +12,16 @@ const Crew = ()=> {
 
     return(
         <>
-        {image && <CastMovie image={image[0]} backdrop={image[1]} title={title} id={id} />}
-        {(cast || crew) &&
-        <div className="cast-lists-container">
-            <CastList cast={cast} />
-            <div className="cast-crew-container">
-                <CastList crew={crew} />
-            </div>
-        </div>}
+        <div className="page-cast-container">
+            {image && <CastMovie image={image[0]} backdrop={image[1]} title={title} id={id} />}
+            {(cast || crew) &&
+            <div className="cast-lists-container">
+                    <CastList cast={cast} />
+                    <div className="cast-crew-container">
+                        <CastList crew={crew} />
+                    </div>
+            </div>}
+        </div>
         </>
     )
 }
