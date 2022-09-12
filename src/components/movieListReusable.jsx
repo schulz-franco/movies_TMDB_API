@@ -49,7 +49,7 @@ const MovieListReusable = (props)=> {
                             <Link key={movie.id} to={"/movie/" + movie.id} className="movie-container">
                                 {movie.poster_path ? <LazyLoadImage  wrapperClassName="lazy-load-image-movie" width={"100%"} height={240} src={"https://image.tmdb.org/t/p/w400" + movie.poster_path} alt={movie.title} placeholderSrc={placeholderImage} /> : <img className="lazy-load-image-movie" width={"100%"} height={240} src={noImage} alt={movie.title} />}
                                 <span className="movie-title">{movie.title}</span>
-                                <span className="year">{movie.release_date.slice(0, 4)}</span>
+                                <span className="year">{movie.release_date ? movie.release_date.slice(0, 4) : "-"}</span>
                             </Link>
                         )
                     })}
