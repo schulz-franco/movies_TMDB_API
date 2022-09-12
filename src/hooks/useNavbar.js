@@ -12,7 +12,7 @@ const useNavbar = ()=> {
     const navbarRef = useRef(null)
     const inputRef = useRef(null)
     const isDesktop = useMediaQuery({
-        query: '(min-width: 1024px)'
+        query: '(min-width: 1000px)'
     })
 
     useEffect(()=> {

@@ -14,7 +14,7 @@ const Carousel = ()=> {
                 <div className="carousel-items-container">
                     {moviesNews.map((movie, index) => {
                         return(
-                            <CSSTransition key={movie.id} in={(currentItem === index)} timeout={300} classNames={'carousel-anim'} unmountOnExit>
+                            <CSSTransition key={movie.id} appear in={(currentItem === index)} timeout={0} classNames={'carousel-anim'} unmountOnExit>
                                 <CarouselContent
                                     id={movie.id}
                                     backdrop_url={movie.poster_path}

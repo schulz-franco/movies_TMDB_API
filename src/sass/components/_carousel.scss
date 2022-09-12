@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: min-content;
+    position: relative;
 }
 
 .movie-carousel-container {
@@ -12,10 +13,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     padding: 160px 30px 20px 30px;
-    position: relative;
+    position: absolute;
     height: 500px;
-    transition: 800ms;
+    transition: 300ms;
     z-index: 0;
+    transform: translateX(100%);
     box-shadow: inset 0 -40px 50px 40px #080f28;
     &::after {
         content: "";
@@ -61,11 +63,15 @@
 }
 
 .movie-carousel-container .movie-overview {
-    height: 130px;
+    height: 100px;
     overflow: auto;
     font-size: 1.3rem;
     line-height: 2rem;
+    margin-bottom: 2rem;
     color: #8da0bc;
+    @include tablet {
+        height: 60px;
+    }
     @include desktop {
         height: 60px;
         padding-right: 8rem;
@@ -98,7 +104,7 @@
     background-color: #007aff;
     max-width: min-content;
     border-radius: 3rem;
-    margin: 2rem 0 4rem 0;
+    margin: 0 0 4rem 0;
     transition: 200ms;
 }
 
@@ -121,7 +127,10 @@
     column-gap: .500rem;
     position: relative;
     z-index: 0;
-    margin-top: -3rem;
+    margin-top: 39rem;
+    @include tablet {
+        margin-top: 32rem;
+    }
     @include desktop {
         padding: 0 8rem;
         justify-content: end;
@@ -144,17 +153,9 @@
 }
 
 .carousel-anim-enter {
-    opacity: 0;
+    transform: translateX(100%);
 }
 
 .carousel-anim-enter-done {
-    opacity: 1;
-}
-
-.carousel-anim-exit {
-    opacity: 1;
-}
-
-.carousel-anim-exit-done {
-    opacity: 0;
+    transform: translateX(0);
 }

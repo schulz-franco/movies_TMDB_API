@@ -4,8 +4,13 @@
     grid-auto-rows: min-content;
     margin-top: 2rem;
     padding: 0 1.8rem;
+    position: relative;
+    z-index: 0;
     @include desktop {
-        padding: 0 26rem 0 8rem;
+        padding: 0 22rem 0 8rem;
+    }
+    @include big-desktop {
+        padding: 0 30rem 0 8rem;
     }
 }
 
@@ -70,6 +75,10 @@
     @include desktop {
         column-gap: 1rem;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @include big-desktop {
+        column-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
