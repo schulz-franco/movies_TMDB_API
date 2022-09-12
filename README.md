@@ -3,9 +3,13 @@
 If you want see the progress, get your Read Access Token from https://www.themoviedb.org/ \
 Go to src/services/options.js and paste your token into the variable called "PUBLIC_TOKEN"
 
+# Demo
+
+https://schulz-franco-movies.netlify.app/
+
 # Current pendings list
 
-- Reshape carousel component
+- Test in resolutions greater than 1360px
 - Fix scrollable components in movie section
 - Responsive design details
 - Finish clean architecture

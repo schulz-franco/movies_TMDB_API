@@ -21,7 +21,7 @@ const onSubmitHandler = (e, open, setOpen, search, setSearch, navigate, isDeskto
     e.preventDefault()
     !isDesktop && controlNavbar(open, setOpen)
     window.scrollTo(0 ,0)
-    navigate((search.length != "") ? ("/movies/search/" + search) : "/", {replace: true})
+    navigate((search.trim() !== "") ? ("/movies/search/" + search) : "/", {replace: true})
     setSearch("")
 }
 
