@@ -48,7 +48,7 @@ export default function App() {
             </Suspense>
           } />
         </Routes>
-        <Footer />
+        <Footer margin="auto" />
     </BrowserRouter>
   );
 }

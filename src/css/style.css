@@ -13,6 +13,11 @@ body {
   cursor: default;
   background-color: #080f28; }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; }
+
 a {
   text-decoration: none; }
 
