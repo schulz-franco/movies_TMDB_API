@@ -336,9 +336,9 @@ body::-webkit-scrollbar-thumb {
   padding: 160px 30px 20px 30px;
   position: absolute;
   height: 500px;
-  transition: 300ms;
+  transition: 600ms;
   z-index: 0;
-  transform: translateX(100%);
+  opacity: 0;
   box-shadow: inset 0 -40px 50px 40px #080f28; }
   .movie-carousel-container::after {
     content: "";
@@ -456,10 +456,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #007aff; }
 
 .carousel-anim-enter {
-  transform: translateX(100%); }
+  opacity: 0; }
 
 .carousel-anim-enter-done {
-  transform: translateX(0); }
+  opacity: 1; }
 
 .movies-main-container {
   display: grid;
@@ -552,9 +552,12 @@ body::-webkit-scrollbar-thumb {
 .movies-list-container .movie-container img {
   border-radius: .200rem; }
 
+.movies-list-container a {
+  transition: 50ms; }
+
 @media only screen and (min-width: 1000px) {
-  .movies-list-container .movie-container img:hover {
-    opacity: 0.8; } }
+  .movies-list-container a:hover {
+    transform: scale(0.98); } }
 
 .movies-list-container .movie-container .lazy-load-image-movie {
   border-radius: .250rem; }
@@ -902,10 +905,6 @@ body::-webkit-scrollbar-thumb {
   grid-template-rows: min-content min-content;
   margin-right: 1rem;
   width: 150px; }
-
-@media only screen and (min-width: 1000px) {
-  .section-container .items a img:hover {
-    opacity: 0.8; } }
 
 .section-container .items .item .img-person {
   border-top-left-radius: .4rem;
@@ -1288,7 +1287,7 @@ body::-webkit-scrollbar-thumb {
       grid-row: 1/2; } }
 
 .footer-container .social {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.781);
   font-size: 1.6rem;
   margin-right: 0.5rem;
   opacity: 0.9;

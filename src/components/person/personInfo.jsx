@@ -10,7 +10,7 @@ const PersonInfo = (props)=> {
     return(
         <>
         <div style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original" + props.backdrop + ")"}} className="person-container">
-            {props.image ? <LazyLoadImage wrapperClassName="lazy-load-img"  src={"https://image.tmdb.org/t/p/original" + props.image} width={150} height={180} placeholderSrc={placeholderImage} /> : <img src={noImage} width={150} height={180} />}
+            {props.image ? <LazyLoadImage wrapperClassName="lazy-load-img"  src={"https://image.tmdb.org/t/p/original" + props.image} width={120} height={140} placeholderSrc={placeholderImage} /> : <img src={noImage} width={120} height={140} />}
             <span className="name">{props.name}</span>
         </div>
         <div className="personal-info">

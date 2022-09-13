@@ -285,12 +285,6 @@
     width: 150px;
 }
 
-.section-container .items a img:hover {
-    @include desktop {
-        opacity: 0.8;
-    }
-}
-
 .section-container .items .item .img-person {
     border-top-left-radius: .4rem;
     border-top-right-radius: .4rem;

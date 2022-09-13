@@ -104,9 +104,13 @@
     border-radius: .200rem;
 }
 
-.movies-list-container .movie-container img:hover {
+.movies-list-container a {
+    transition: 50ms;
+}
+
+.movies-list-container a:hover {
     @include desktop {
-        opacity: 0.8;
+        transform: scale(0.98);
     }
 }
 
