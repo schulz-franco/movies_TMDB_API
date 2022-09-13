@@ -4,13 +4,13 @@
     grid-auto-rows: min-content;
     row-gap: 1rem;
     background-color: rgb(20, 26, 50);
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     align-items: center;
     @include tablet {
         grid-template-columns: 1fr min-content;
     }
     @include desktop {
-        padding: 2rem 8rem;
+        padding: 1.5rem 8rem;
     }
 }
 

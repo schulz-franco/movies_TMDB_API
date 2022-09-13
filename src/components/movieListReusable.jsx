@@ -35,7 +35,7 @@ const MovieListReusable = (props)=> {
                     }
                     {(props.section === "home") && 
                         <>
-                            <span className="movies-title">Online movies</span>
+                            <span className="movies-title">Movies Data Base</span>
                             <div className="category-container">
                                 <span onClick={(ev)=> changeCategory(ev, "latest", setCategory, page, setPage)} className="category category-current">Latest</span>
                                 <span onClick={(ev)=> changeCategory(ev, "ranking", setCategory, page, setPage)} className="category">Popular</span>
