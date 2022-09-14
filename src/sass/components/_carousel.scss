@@ -83,12 +83,12 @@
 }
 
 .movie-carousel-container .movie-overview::-webkit-scrollbar-track {
-    background: #0f0f0f00;
+    background: transparent;
 }
 
 .movie-carousel-container .movie-overview::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.226);
-    border: 3px solid #d3d3d300;
+    border: 3px solid transparent;
 }
 
 .movie-carousel-container .movie-go-button {
@@ -102,14 +102,14 @@
     white-space: nowrap;
     background-color: #007aff;
     max-width: min-content;
-    border-radius: 3rem;
+    border-radius: 30px;
     margin: 0 0 4rem 0;
     transition: 200ms;
 }
 
 .movie-carousel-container .movie-go-button:hover {
     @include desktop {
-        transform: scale(1.05);
+        padding: 1rem 2.5rem;
     }
 }
 

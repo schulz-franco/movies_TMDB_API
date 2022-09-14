@@ -57,7 +57,7 @@
 
 .movies-main-container .category-container .category:hover {
     @include desktop {
-        color: #007aff;
+        color: rgba(255, 255, 255, 0.705);
     }
 }
 
@@ -108,14 +108,15 @@
     transition: 50ms;
 }
 
-.movies-list-container a:hover {
-    @include desktop {
-        transform: scale(0.98);
-    }
-}
-
 .movies-list-container .movie-container .lazy-load-image-movie {
     border-radius: .250rem;
+    border-bottom: 1px solid transparent;
+}
+
+.movies-list-container .movie-container .lazy-load-image-movie:hover {
+    @include desktop {
+        border-color: #007aff;
+    }
 }
 
 .movies-list-container .movie-container .lazy-load-image-movie:hover ~ .movie-title {

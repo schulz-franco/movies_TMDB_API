@@ -10,7 +10,7 @@ const MovieCast = (props)=> {
             <div className="section-header">
                 <span className="title">Top Billed Cast</span>
             </div>
-            <div className="items">
+            <div className="items items-cast">
                 {props.credits.cast.map((person, index) => {
                     if (index < 9) {
                         return(

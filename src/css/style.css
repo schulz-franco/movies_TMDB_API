@@ -292,7 +292,7 @@ body::-webkit-scrollbar-thumb {
       margin: 0;
       background-color: #1e2747;
       padding: .8rem;
-      border-radius: 14px; } }
+      border-radius: 6px; } }
 
 .navbar-container .arrow-menu {
   position: absolute;
@@ -396,11 +396,11 @@ body::-webkit-scrollbar-thumb {
   border-radius: 2px; }
 
 .movie-carousel-container .movie-overview::-webkit-scrollbar-track {
-  background: #0f0f0f00; }
+  background: transparent; }
 
 .movie-carousel-container .movie-overview::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.226);
-  border: 3px solid #d3d3d300; }
+  border: 3px solid transparent; }
 
 .movie-carousel-container .movie-go-button {
   display: grid;
@@ -413,13 +413,13 @@ body::-webkit-scrollbar-thumb {
   white-space: nowrap;
   background-color: #007aff;
   max-width: min-content;
-  border-radius: 3rem;
+  border-radius: 30px;
   margin: 0 0 4rem 0;
   transition: 200ms; }
 
 @media only screen and (min-width: 1000px) {
   .movie-carousel-container .movie-go-button:hover {
-    transform: scale(1.05); } }
+    padding: 1rem 2.5rem; } }
 
 .movie-carousel-container .movie-go-button span {
   color: #fff; }
@@ -513,7 +513,7 @@ body::-webkit-scrollbar-thumb {
 
 @media only screen and (min-width: 1000px) {
   .movies-main-container .category-container .category:hover {
-    color: #007aff; } }
+    color: rgba(255, 255, 255, 0.705); } }
 
 .movies-main-container .category-container .category-current {
   color: #fff;
@@ -555,12 +555,13 @@ body::-webkit-scrollbar-thumb {
 .movies-list-container a {
   transition: 50ms; }
 
-@media only screen and (min-width: 1000px) {
-  .movies-list-container a:hover {
-    transform: scale(0.98); } }
-
 .movies-list-container .movie-container .lazy-load-image-movie {
-  border-radius: .250rem; }
+  border-radius: .250rem;
+  border-bottom: 1px solid transparent; }
+
+@media only screen and (min-width: 1000px) {
+  .movies-list-container .movie-container .lazy-load-image-movie:hover {
+    border-color: #007aff; } }
 
 @media only screen and (min-width: 1000px) {
   .movies-list-container .movie-container .lazy-load-image-movie:hover ~ .movie-title {
@@ -870,6 +871,12 @@ body::-webkit-scrollbar-thumb {
     .section-container .items {
       padding: 0 0 .5rem 0; } }
 
+@media only screen and (min-width: 1280px) {
+  .section-container .items-cast {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: min-content; } }
+
 @media only screen and (min-width: 1000px) {
   .section-container .items::-webkit-scrollbar {
     width: 0px;
@@ -898,6 +905,9 @@ body::-webkit-scrollbar-thumb {
 
 .section-container .items .item-cast {
   width: 90px; }
+  @media only screen and (min-width: 1280px) {
+    .section-container .items .item-cast {
+      width: 100px; } }
 
 .section-container .items a {
   display: grid;
@@ -910,6 +920,9 @@ body::-webkit-scrollbar-thumb {
   border-top-left-radius: .4rem;
   border-top-right-radius: .4rem;
   width: 90px; }
+  @media only screen and (min-width: 1280px) {
+    .section-container .items .item .img-person {
+      width: 100px; } }
 
 .section-container .items .lazy-load-img-backdrop {
   margin-bottom: .5rem;
@@ -949,11 +962,16 @@ body::-webkit-scrollbar-thumb {
   white-space: nowrap; }
   @media only screen and (min-width: 1000px) {
     .section-container .full-crew {
-      margin: 1rem 0 1rem 0; } }
+      font-size: 1rem;
+      margin: 1rem 0 1rem 0;
+      padding: 1rem 1.2rem;
+      border: 2px solid #111;
+      transition: padding 100ms;
+      border-radius: 4px; } }
 
 @media only screen and (min-width: 1000px) {
   .section-container .full-crew:hover {
-    text-decoration: underline; } }
+    padding: 1rem 2rem; } }
 
 .movie-page-container .info-container .more-info {
   display: grid;
@@ -1242,7 +1260,7 @@ body::-webkit-scrollbar-thumb {
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   row-gap: 1rem;
-  background-color: #141a32;
+  background-color: #050918;
   padding: 1.5rem 2rem;
   align-items: center; }
   @media only screen and (min-width: 768px) {

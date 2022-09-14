@@ -3,7 +3,8 @@
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
     row-gap: 1rem;
-    background-color: rgb(20, 26, 50);
+    background-color: #050918;
+    // background-color: rgb(20, 26, 50);
     padding: 1.5rem 2rem;
     align-items: center;
     @include tablet {
